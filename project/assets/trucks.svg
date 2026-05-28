@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  
+
+  
+  <symbol id="truck-rigid-mid" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 50 50 L 595 60 L 595 130 L 475 130 L 475 180 L 50 180 Z"></path>
+      
+      <rect x="480" y="142" width="70" height="62"></rect>
+      
+      <rect x="490" y="152" width="35" height="16" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <path d="M 550 160 L 700 160 L 730 204 L 550 204 Z"></path>
+      
+      <rect x="710" y="180" width="20" height="14"></rect>
+      
+      <rect x="40" y="204" width="700" height="10"></rect>
+      
+      <rect x="508" y="22" width="6" height="32"></rect>
+      <rect x="478" y="10" width="70" height="12"></rect>
+      <circle cx="492" cy="4" r="3"></circle>
+      <circle cx="513" cy="4" r="3"></circle>
+      <circle cx="534" cy="4" r="3"></circle>
+      
+      <circle cx="170" cy="225" r="48"></circle>
+      <circle cx="170" cy="225" r="16" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="660" cy="225" r="42"></circle>
+      <circle cx="660" cy="225" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+  
+  <symbol id="truck-rigid-large" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 30 28 L 620 38 L 620 118 L 480 118 L 480 175 L 30 175 Z"></path>
+      
+      <rect x="280" y="38" width="3" height="80" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <rect x="490" y="130" width="80" height="70"></rect>
+      <rect x="500" y="142" width="40" height="18" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <rect x="572" y="130" width="3" height="70" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <path d="M 570 152 L 720 152 L 755 200 L 570 200 Z"></path>
+      
+      <rect x="25" y="200" width="740" height="12"></rect>
+      
+      <rect x="540" y="0" width="7" height="38"></rect>
+      <rect x="500" y="-12" width="90" height="14" transform="translate(0,12)"></rect>
+      <circle cx="516" cy="-8" r="4" transform="translate(0,12)"></circle>
+      <circle cx="546" cy="-8" r="4" transform="translate(0,12)"></circle>
+      <circle cx="576" cy="-8" r="4" transform="translate(0,12)"></circle>
+      
+      <circle cx="170" cy="228" r="55"></circle>
+      <circle cx="170" cy="228" r="20" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="690" cy="228" r="48"></circle>
+      <circle cx="690" cy="228" r="17" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+  
+  <symbol id="truck-ultra" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 20 20 L 640 30 L 640 110 L 490 110 L 490 165 L 20 165 Z"></path>
+      
+      <rect x="310" y="30" width="3" height="80" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <rect x="500" y="122" width="95" height="80"></rect>
+      <rect x="512" y="135" width="48" height="22" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      <rect x="595" y="122" width="3" height="80" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <path d="M 598 142 L 745 142 L 780 200 L 598 200 Z"></path>
+      
+      <rect x="15" y="200" width="775" height="12"></rect>
+      
+      <rect x="560" y="-5" width="8" height="32" transform="translate(0,5)"></rect>
+      <rect x="515" y="-18" width="100" height="14" transform="translate(0,5)"></rect>
+      <circle cx="532" cy="-14" r="4" transform="translate(0,5)"></circle>
+      <circle cx="563" cy="-14" r="4" transform="translate(0,5)"></circle>
+      <circle cx="595" cy="-14" r="4" transform="translate(0,5)"></circle>
+      
+      <circle cx="150" cy="232" r="58"></circle>
+      <circle cx="150" cy="232" r="22" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="225" cy="232" r="58"></circle>
+      <circle cx="225" cy="232" r="22" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      
+      <circle cx="720" cy="232" r="52"></circle>
+      <circle cx="720" cy="232" r="20" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+  
+  <symbol id="truck-adt" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 25 80 L 425 88 L 425 175 L 70 175 L 25 165 Z"></path>
+      
+      <rect x="230" y="88" width="3" height="87" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+
+      
+      <rect x="425" y="148" width="35" height="50"></rect>
+      
+      <circle cx="442" cy="172" r="6" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+
+      
+      
+      <rect x="460" y="180" width="280" height="20"></rect>
+      
+      <path d="M 535 90 L 625 90 L 640 122 L 525 122 Z"></path>
+      <rect x="525" y="122" width="115" height="62"></rect>
+      
+      <path d="M 540 132 L 615 132 L 615 158 L 540 158 Z" class="hub" style="fill: var(--hub, #FFFFFF)"></path>
+      
+      <path d="M 640 138 L 720 138 L 745 180 L 640 180 Z"></path>
+
+      
+      <rect x="572" y="50" width="6" height="42"></rect>
+      <rect x="540" y="38" width="70" height="12"></rect>
+      <circle cx="554" cy="32" r="3"></circle>
+      <circle cx="575" cy="32" r="3"></circle>
+      <circle cx="596" cy="32" r="3"></circle>
+
+      
+      <circle cx="110" cy="218" r="40"></circle>
+      <circle cx="110" cy="218" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="210" cy="218" r="40"></circle>
+      <circle cx="210" cy="218" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="660" cy="218" r="42"></circle>
+      <circle cx="660" cy="218" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+</svg>

@@ -1,0 +1,1396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto · Approved Manufacturers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="assets/pronto_badge_black.svg" />
+<link rel="stylesheet" href="colors_and_type.css" />
+<script src="image-slot.js"></script>
+<style>
+  :root {
+    --accent: var(--pronto-yellow); /* observed in marketing decks; toggleable */
+    --page-x: clamp(28px, 4vw, 64px);
+  }
+  html, body { background: var(--pronto-white); color: var(--fg); }
+  body { overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* ==========================================================
+     NAV
+     ========================================================== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 32px;
+    padding: 18px var(--page-x);
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav .brand { display: flex; align-items: center; gap: 16px; }
+  .nav .brand img { height: 18px; width: auto; }
+  .nav .ver {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.16);
+  }
+  .nav .links { display: flex; gap: 28px; margin-left: 24px; }
+  .nav .links a {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--n-300);
+    transition: color var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .links a:hover { color: var(--pronto-white); }
+  .nav .links a.active { color: var(--pronto-white); position: relative; }
+  .nav .links a.active::after { content:""; position:absolute; left:0; right:0; bottom:-22px; height:1px; background: var(--pronto-white); }
+  .nav .spacer { flex: 1; }
+  .nav .cta {
+    font-family: var(--font-sans); font-weight: 500; font-size: 13px;
+    padding: 10px 18px; background: var(--pronto-white); color: var(--pronto-black);
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .nav .cta:hover { opacity: 0.65; }
+  .nav .cta .arr { display:inline-block; width:14px; height:1px; background: currentColor; position:relative; }
+  .nav .cta .arr::after { content:""; position:absolute; right:0; top:-3px; width:7px; height:7px; border-right:1px solid currentColor; border-top:1px solid currentColor; transform: rotate(45deg); }
+
+  /* ==========================================================
+     HERO
+     ========================================================== */
+  .hero {
+    position: relative;
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    overflow: hidden;
+    min-height: 760px;
+    display: flex; align-items: flex-end;
+  }
+  .hero .photo {
+    position: absolute; inset: 0;
+    background: url("assets/pronto_hero_rolling.jpg") center 30%/cover no-repeat;
+    filter: saturate(0.85) contrast(1.05);
+  }
+  .hero .scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(15,15,16,0.45) 0%, rgba(15,15,16,0) 26%, rgba(15,15,16,0.1) 48%, rgba(15,15,16,0.97) 92%),
+      linear-gradient(90deg, rgba(15,15,16,0.85) 0%, rgba(15,15,16,0.35) 38%, rgba(15,15,16,0) 70%);
+  }
+  .hero .ticker {
+    position: absolute; top: 22px; right: var(--page-x); z-index: 3;
+    display: flex; gap: 22px;
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--pronto-white);
+  }
+  .hero .ticker .dot {
+    width: 7px; height: 7px; background: var(--accent);
+    display: inline-block; margin-right: 8px; vertical-align: middle;
+    animation: blink 1.6s var(--ease-pronto) infinite;
+  }
+  @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0.3 } }
+
+  .hero .inner {
+    position: relative; z-index: 2;
+    width: 100%;
+    padding: 140px var(--page-x) 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero .eyebrow {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--pronto-white);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 32px;
+  }
+  .hero .eyebrow .pill {
+    padding: 5px 10px; background: var(--accent); color: var(--pronto-black);
+  }
+  .hero .head {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(52px, 7vw, 120px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    margin: 0;
+    color: var(--pronto-white);
+    text-wrap: balance;
+  }
+  .hero .head em { font-style: normal; color: var(--accent); }
+  .hero .sub {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 18px; line-height: 1.5;
+    color: var(--n-100);
+    max-width: 52ch;
+    margin-top: 32px;
+  }
+
+  /* ==========================================================
+     STATS STRIP
+     ========================================================== */
+  .stats {
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    padding: 96px var(--page-x);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .stats .row { display: grid; grid-template-columns: 220px 1fr; gap: 56px; margin-bottom: 56px; align-items: end; }
+  .stats .row .label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400);
+  }
+  .stats .row h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 4vw, 64px); line-height: 0.98;
+    letter-spacing: -0.025em; margin: 0;
+    text-wrap: balance; max-width: 26ch;
+  }
+  .stats .grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.16);
+  }
+  .stats .stat {
+    padding: 36px 28px 8px 0;
+    border-right: 1px solid rgba(255,255,255,0.16);
+    display: grid; gap: 14px; align-content: start;
+  }
+  .stats .stat:last-child { border-right: 0; }
+  .stats .stat + .stat { padding-left: 28px; }
+  .stats .num {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(60px, 5.6vw, 96px); line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+  }
+  .stats .num sup { font-size: 0.42em; vertical-align: top; line-height: 1; letter-spacing: 0; margin-left: 2px; position: relative; top: 0.4em; }
+  .stats .stat .key {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--pronto-white);
+  }
+  .stats .stat .desc {
+    font-family: var(--font-body); font-weight: 300; font-size: 13px;
+    line-height: 1.5; color: var(--n-300); max-width: 30ch;
+  }
+
+  /* ==========================================================
+     OEM INDEX (cards at the top of the OEM section)
+     ========================================================== */
+  .oems-head {
+    padding: 128px var(--page-x) 40px;
+    display: grid; grid-template-columns: 220px 1fr; gap: 56px;
+    align-items: end;
+  }
+  .oems-head .label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .oems-head h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(48px, 5vw, 84px); line-height: 0.96; letter-spacing: -0.028em;
+    margin: 0; text-wrap: balance; max-width: 22ch;
+  }
+  .oems-head h2 em { font-style: normal; color: var(--accent); background: var(--pronto-black); padding: 0 8px 4px; }
+
+  .oem-index {
+    padding: 24px var(--page-x) 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--divider);
+    border-block: 1px solid var(--divider);
+    margin: 0 var(--page-x);
+    margin-left: var(--page-x); margin-right: var(--page-x);
+  }
+  /* Fix: we want it edge-to-edge with side padding handled inside */
+  .oem-index-wrap { padding: 0 var(--page-x) 80px; }
+  .oem-index {
+    margin: 0;
+    border-block: 1px solid var(--divider);
+    border-inline: 1px solid var(--divider);
+  }
+  .oem-index a {
+    background: var(--surface);
+    padding: 36px 32px;
+    display: grid; gap: 22px;
+    align-content: space-between;
+    min-height: 200px;
+    transition: background var(--dur-base) var(--ease-pronto), color var(--dur-base) var(--ease-pronto);
+  }
+  .oem-index a:hover { opacity: 0.6; }
+  .ix-top { display: flex; justify-content: space-between; align-items: center; }
+  .ix-meta {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .ix-name {
+    font-family: var(--font-sans); font-weight: 500;
+    font-size: clamp(36px, 3.4vw, 56px); line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .ix-tag {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .ix-arr { display: inline-block; width: 26px; height: 1px; background: currentColor; position: relative; }
+  .ix-arr::after { content:""; position:absolute; right:0; top:-5px; width:11px; height:11px; border-right:1px solid currentColor; border-top:1px solid currentColor; transform: rotate(45deg); }
+
+  /* ==========================================================
+     OEM SECTION (one per manufacturer)
+     ========================================================== */
+  .oem { padding: 96px var(--page-x); border-top: 1px solid var(--divider); }
+  .oem .mark {
+    display: grid; grid-template-columns: 220px 1fr auto; gap: 32px;
+    align-items: baseline;
+    margin-bottom: 56px;
+  }
+  .oem .mark .num {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .oem .mark .name {
+    font-family: var(--font-sans); font-weight: 500;
+    font-size: clamp(40px, 3.6vw, 56px); line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .oem .mark .name span {
+    font-family: var(--font-body); font-weight: 300; font-size: 16px;
+    letter-spacing: 0; color: var(--fg-muted);
+    margin-left: 18px;
+  }
+  .oem .mark .status {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .oem .mark .status .live {
+    width: 8px; height: 8px; background: var(--status-success, #2c8b4b);
+    border-radius: 999px;
+  }
+
+  .oem .body { display: grid; grid-template-columns: 220px 1fr; gap: 56px; margin-bottom: 56px; align-items: start; }
+  .oem .body .copy {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 17px; line-height: 1.5; color: var(--fg);
+    max-width: 58ch;
+  }
+  .oem .body .copy strong { font-weight: 700; }
+  .oem .body .partner {
+    display: grid; gap: 14px;
+  }
+  .oem .body .partner .pk {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .oem .body .partner .pv {
+    font-family: var(--font-sans); font-weight: 500;
+    font-size: 18px; line-height: 1.2; letter-spacing: -0.005em;
+  }
+  .oem .body .partner .pn {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 13px; line-height: 1.45; color: var(--fg-muted);
+  }
+
+  /* Lineup table — rows of approved truck models */
+  .lineup-head {
+    display: grid;
+    grid-template-columns: 56px minmax(180px,1.3fr) minmax(120px,1fr) minmax(120px,0.7fr) minmax(120px,0.8fr) minmax(120px,1fr);
+    gap: 24px;
+    padding: 14px 0;
+    border-top: 1px solid var(--pronto-black);
+    border-bottom: 1px solid var(--divider);
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .lineup-row {
+    display: grid;
+    grid-template-columns: 56px minmax(180px,1.3fr) minmax(120px,1fr) minmax(120px,0.7fr) minmax(120px,0.8fr) minmax(120px,1fr);
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--divider);
+    align-items: center;
+    transition: background var(--dur-quick) var(--ease-pronto);
+  }
+  .lineup-row:hover { background: var(--surface-alt, #F7F7F7); }
+  .lineup-row .idx {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; color: var(--fg-muted);
+  }
+  .lineup-row .model {
+    font-family: var(--font-sans); font-weight: 500;
+    font-size: 22px; line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .lineup-row .model small {
+    display: block; margin-top: 4px;
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 13px; color: var(--fg-muted); letter-spacing: 0;
+  }
+  .lineup-row .cell {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 14px; color: var(--fg);
+  }
+  .lineup-row .cell.mono {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg);
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 5px 9px;
+    border: 1px solid currentColor;
+    color: var(--fg);
+  }
+  .badge.prod { background: var(--pronto-black); color: var(--pronto-white); border-color: var(--pronto-black); }
+  .badge.val { color: var(--fg); }
+  .badge.dev { color: var(--fg-muted); }
+
+  /* ==========================================================
+     EDITIONS STRIP (Pronto AHS Vision / VLR / VLR 360)
+     ========================================================== */
+  .editions {
+    padding: 128px var(--page-x);
+    background: var(--surface-alt, #F4F4F4);
+    border-top: 1px solid var(--divider);
+  }
+  .editions-head { display: grid; grid-template-columns: 220px 1fr; gap: 56px; margin-bottom: 56px; align-items: end; }
+  .editions-head .label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .editions-head h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 4vw, 64px); line-height: 0.98; letter-spacing: -0.025em;
+    margin: 0; text-wrap: balance; max-width: 26ch;
+  }
+  .editions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--divider); border: 1px solid var(--divider); }
+  .edition { background: var(--pronto-white); padding: 36px 32px 40px; display: grid; gap: 18px; align-content: start; min-height: 360px; }
+  .edition .ek { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); }
+  .edition h3 { font-family: var(--font-sans); font-weight: 500; font-size: 32px; line-height: 1.05; letter-spacing: -0.015em; margin: 0; }
+  .edition p { font-family: var(--font-body); font-weight: 300; font-size: 15px; line-height: 1.5; color: var(--fg); margin: 0; max-width: 36ch; }
+  .edition .sensors {
+    margin-top: 12px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .edition .sensors span {
+    font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 5px 9px; border: 1px solid var(--divider-strong, #999); color: var(--fg);
+  }
+  .edition.feat { background: var(--pronto-black); color: var(--pronto-white); }
+  .edition.feat .ek { color: var(--n-400); }
+  .edition.feat p { color: var(--n-200); }
+  .edition.feat .sensors span { border-color: rgba(255,255,255,0.32); color: var(--pronto-white); }
+  .edition .tag {
+    font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 4px 9px; background: var(--accent); color: var(--pronto-black);
+    align-self: start;
+  }
+
+  /* ==========================================================
+     CASE-STUDY / TRUST BLOCK
+     ========================================================== */
+  .proof { padding: 128px var(--page-x); }
+  .proof .row { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 56px; align-items: start; }
+  .proof .label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .proof h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 4vw, 64px); line-height: 0.98; letter-spacing: -0.025em;
+    margin: 0 0 24px; text-wrap: balance;
+  }
+  .proof .lede { font-family: var(--font-body); font-weight: 300; font-size: 17px; line-height: 1.5; color: var(--fg); max-width: 50ch; margin: 0 0 36px; }
+  .proof .pulls { display: grid; gap: 16px; margin-top: 8px; }
+  .proof .pull { display: grid; grid-template-columns: 88px 1fr; gap: 18px; padding: 14px 0; border-top: 1px solid var(--divider); }
+  .proof .pull:last-child { border-bottom: 1px solid var(--divider); }
+  .proof .pull .k { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted); }
+  .proof .pull .v { font-family: var(--font-body); font-weight: 300; font-size: 15px; line-height: 1.45; color: var(--fg); }
+  .proof .pull .v strong { font-weight: 700; }
+
+  .quote {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 44px 40px; display: grid; gap: 24px;
+    align-content: space-between; min-height: 360px;
+  }
+  .quote .q {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: 26px; line-height: 1.2; letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .quote .q::before { content: "\201C"; }
+  .quote .q::after { content: "\201D"; }
+  .quote .attr {
+    display: grid; gap: 4px;
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-300);
+  }
+  .quote .attr .who { color: var(--pronto-white); }
+
+  /* ==========================================================
+     CTA BAND
+     ========================================================== */
+  .cta-band {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 128px var(--page-x);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .cta-band .row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
+  .cta-band h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(56px, 6vw, 104px); line-height: 0.94; letter-spacing: -0.03em;
+    margin: 0; text-wrap: balance; max-width: 14ch;
+  }
+  .cta-band h2 em { font-style: normal; color: var(--accent); }
+  .cta-band .lede { font-family: var(--font-body); font-weight: 300; font-size: 17px; line-height: 1.5; color: var(--n-300); max-width: 48ch; }
+  .cta-band .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .cta-band .btn {
+    font-family: var(--font-sans); font-weight: 500; font-size: 14px;
+    padding: 16px 24px; display: inline-flex; align-items: center; gap: 14px;
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+  }
+  .cta-band .btn .arr { display: inline-block; width: 18px; height: 1px; background: currentColor; position: relative; }
+  .cta-band .btn .arr::after { content:""; position:absolute; right:0; top:-4px; width:9px; height:9px; border-right:1px solid currentColor; border-top:1px solid currentColor; transform: rotate(45deg); }
+  .cta-band .btn:hover { opacity: 0.65; }
+  .cta-band .btn.primary { background: var(--pronto-white); color: var(--pronto-black); }
+  .cta-band .btn.secondary { background: transparent; color: var(--pronto-white); border: 1px solid var(--pronto-white); }
+
+  /* ==========================================================
+     FOOTER
+     ========================================================== */
+  footer { padding: 28px var(--page-x); background: var(--pronto-black); color: var(--n-300); border-top: 1px solid rgba(255,255,255,0.08); }
+  footer .row { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  footer img { height: 14px; width: auto; }
+  footer .mono { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  /* ==========================================================
+     REVEAL
+     ========================================================== */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--ease-pronto), transform 700ms var(--ease-pronto); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ==========================================================
+     RESPONSIVE
+     ========================================================== */
+  @media (max-width: 1100px) {
+    .stats .grid { grid-template-columns: repeat(2, 1fr); }
+    .stats .stat:nth-child(2) { border-right: 0; }
+    .stats .stat:nth-child(3) { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.16); margin-top: -1px; }
+    .stats .stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.16); margin-top: -1px; }
+    .oem-index { grid-template-columns: 1fr 1fr; }
+    .editions-grid { grid-template-columns: 1fr; }
+    .proof .row { grid-template-columns: 1fr; }
+    .lineup-head, .lineup-row { grid-template-columns: 40px 1fr 1fr 1fr; }
+    .lineup-row .h-class, .lineup-row .h-frame, .lineup-head .h-class, .lineup-head .h-frame { display: none; }
+    .lineup-row .c-class, .lineup-row .c-frame { display: none; }
+  }
+  @media (max-width: 760px) {
+    .nav .links { display: none; }
+    .nav .ver { display: none; }
+    .hero .ticker { display: none; }
+    .hero .inner { grid-template-columns: 1fr; padding-top: 80px; }
+    .stats .row, .oems-head, .oem .mark, .oem .body, .editions-head, .proof .row, .cta-band .row {
+      grid-template-columns: 1fr;
+    }
+    .oem-index { grid-template-columns: 1fr; }
+    .lineup-head, .lineup-row { grid-template-columns: 40px 1fr 1fr; }
+    .lineup-row .c-status, .lineup-head .h-status { display: none; }
+  }
+
+  /* ==========================================================
+     TRUCK SILHOUETTES
+     ========================================================== */
+  svg.truck { display: block; --body: var(--pronto-black); --hub: var(--pronto-white); }
+  svg.truck.inv, .inv svg.truck { --body: var(--pronto-white); --hub: var(--pronto-black); }
+
+  /* Registry strip after stats — relative-scale class comparison */
+  .registry {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 56px var(--page-x) 80px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .registry .top {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 32px;
+    padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.16);
+  }
+  .registry .top .label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400);
+  }
+  .registry .top h3 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(28px, 2.4vw, 38px); line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0; color: var(--pronto-white);
+    text-wrap: balance; max-width: 36ch;
+  }
+  .registry .top .legend {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); text-align: right;
+  }
+  .registry .row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    align-items: end;
+    padding: 48px 0 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    gap: 24px;
+  }
+  .registry .cls { display: grid; gap: 14px; align-content: end; }
+  .registry .cls svg.truck { --body: var(--pronto-white); --hub: var(--pronto-black); width: 100%; height: auto; }
+  .registry .cls .k {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400);
+  }
+  .registry .cls .v {
+    font-family: var(--font-sans); font-weight: 500;
+    font-size: 17px; letter-spacing: -0.005em; line-height: 1.2;
+    color: var(--pronto-white);
+  }
+  .registry .cls .n {
+    font-family: var(--font-body); font-weight: 300; font-size: 12px;
+    color: var(--n-300); line-height: 1.4;
+  }
+
+  /* Scale ramps for relative size in registry strip */
+  .registry .scale-1 svg.truck { max-width: 65%; }   /* rigid-mid */
+  .registry .scale-2 svg.truck { max-width: 80%; }   /* rigid-large */
+  .registry .scale-3 svg.truck { max-width: 100%; }  /* ultra */
+  .registry .scale-1-adt svg.truck { max-width: 90%; } /* adt - longer */
+
+  /* OEM section: flagship truck anchor block */
+  .oem-anchor {
+    margin: 0 0 64px;
+    padding: 20px 0 32px;
+    border-top: 1px solid var(--pronto-black);
+    border-bottom: 1px solid var(--divider);
+    display: grid; grid-template-columns: 220px 1fr 220px;
+    gap: 48px;
+    align-items: end;
+  }
+  .oem-anchor .anchor-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .oem-anchor .anchor-art {
+    display: block;
+  }
+  .oem-anchor svg.truck { width: 100%; max-width: 100%; height: auto; }
+  .oem-anchor .anchor-meta {
+    text-align: right;
+    display: grid; gap: 6px; justify-items: end;
+  }
+  .oem-anchor .anchor-meta .flag {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 4px 8px; background: var(--accent); color: var(--pronto-black);
+  }
+  .oem-anchor .anchor-meta .model {
+    font-family: var(--font-sans); font-weight: 500;
+    font-size: 22px; letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .oem-anchor .anchor-meta .spec {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  /* Photographic anchor (replaces SVG for OEMs we have renders of) */
+  .oem-anchor.has-photo {
+    grid-template-columns: 220px 1fr 220px;
+    align-items: end;
+    padding: 0 0 24px;
+    border-top: 1px solid var(--pronto-black);
+  }
+  .oem-anchor.has-photo .anchor-photo {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 8px;
+    /* lift slightly off the surface to feel rendered, not stuck */
+    filter: drop-shadow(0 12px 18px rgba(15,15,16,0.10));
+  }
+
+  /* Photographic quote card — replaces flat-black quote */
+  .quote.photo {
+    background-color: var(--pronto-black);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    min-height: 420px;
+  }
+  .quote.photo .scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(15,15,16,0) 0%, rgba(15,15,16,0) 32%, rgba(15,15,16,0.88) 90%);
+  }
+  .quote.photo .inner {
+    position: relative; z-index: 2;
+    padding: 40px;
+    display: grid; gap: 24px;
+    align-content: end;
+    height: 100%;
+    min-height: inherit;
+  }
+  .quote.photo .caption {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-300);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .quote.photo .caption .dot {
+    width: 6px; height: 6px; background: var(--accent); display: inline-block;
+  }
+
+  /* Photographic field-break band */
+  .field-break {
+    position: relative;
+    height: 480px;
+    background-size: cover;
+    background-position: center;
+    color: var(--pronto-white);
+    overflow: hidden;
+  }
+  .field-break .scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(15,15,16,0.7) 0%, rgba(15,15,16,0) 50%),
+      linear-gradient(180deg, rgba(15,15,16,0) 30%, rgba(15,15,16,0.55) 100%);
+  }
+  .field-break .inner {
+    position: relative; z-index: 2;
+    height: 100%;
+    padding: 56px var(--page-x);
+    display: grid; align-content: space-between;
+  }
+  .field-break .label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--pronto-white);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .field-break .label .pill {
+    padding: 4px 9px; background: var(--accent); color: var(--pronto-black);
+  }
+  .field-break h3 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 4vw, 64px); line-height: 0.98; letter-spacing: -0.025em;
+    margin: 0; max-width: 22ch; text-wrap: balance;
+  }
+  .field-break h3 em { font-style: normal; color: var(--accent); }
+  .field-break .stamp {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-300);
+    display: flex; justify-content: space-between;
+    padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.24);
+  }
+
+  .lineup-head, .lineup-row {
+    grid-template-columns: 110px minmax(180px,1.3fr) minmax(120px,1fr) minmax(120px,0.7fr) minmax(120px,0.8fr) minmax(120px,1fr) !important;
+  }
+  .lineup-row .icon {
+    display: flex; align-items: center; gap: 12px;
+    height: 44px;
+  }
+  .lineup-row .icon .ix {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; color: var(--fg-muted);
+  }
+  .lineup-row .icon svg.truck {
+    width: 70px; height: auto;
+  }
+
+  /* OEM index cards — embedded render / silhouette */
+  .oem-index a { padding: 28px 28px 24px; min-height: 252px; position: relative; }
+  .oem-index .ix-slot {
+    width: 100%; height: 128px;
+    margin: 10px 0 0; align-self: end; display: block;
+    --slot-frame-bg: transparent;
+  }
+
+  /* Flagship anchor as a fillable render slot */
+  .oem-anchor.has-slot {
+    grid-template-columns: 220px 1fr 220px;
+    align-items: end;
+    padding: 0 0 24px;
+    border-top: 1px solid var(--pronto-black);
+  }
+  .oem-anchor .anchor-slot {
+    width: 100%; height: 256px; display: block; margin-top: 8px;
+    --slot-frame-bg: transparent;
+  }
+
+  @media (max-width: 1100px) {
+    .registry .row { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+    .oem-anchor { grid-template-columns: 1fr; gap: 16px; }
+    .oem-anchor .anchor-meta { justify-items: start; text-align: left; }
+    .lineup-head, .lineup-row {
+      grid-template-columns: 80px 1fr 1fr 1fr !important;
+    }
+    .lineup-row .icon svg.truck { width: 56px; }
+  }
+  @media (max-width: 760px) {
+    .registry .row { grid-template-columns: 1fr; }
+    .lineup-head, .lineup-row {
+      grid-template-columns: 60px 1fr 1fr !important;
+    }
+  }
+
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  
+
+  
+  <symbol id="truck-rigid-mid" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 50 50 L 595 60 L 595 130 L 475 130 L 475 180 L 50 180 Z"></path>
+      
+      <rect x="480" y="142" width="70" height="62"></rect>
+      
+      <rect x="490" y="152" width="35" height="16" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <path d="M 550 160 L 700 160 L 730 204 L 550 204 Z"></path>
+      
+      <rect x="710" y="180" width="20" height="14"></rect>
+      
+      <rect x="40" y="204" width="700" height="10"></rect>
+      
+      <rect x="508" y="22" width="6" height="32"></rect>
+      <rect x="478" y="10" width="70" height="12"></rect>
+      <circle cx="492" cy="4" r="3"></circle>
+      <circle cx="513" cy="4" r="3"></circle>
+      <circle cx="534" cy="4" r="3"></circle>
+      
+      <circle cx="170" cy="225" r="48"></circle>
+      <circle cx="170" cy="225" r="16" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="660" cy="225" r="42"></circle>
+      <circle cx="660" cy="225" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+  
+  <symbol id="truck-rigid-large" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 30 28 L 620 38 L 620 118 L 480 118 L 480 175 L 30 175 Z"></path>
+      
+      <rect x="280" y="38" width="3" height="80" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <rect x="490" y="130" width="80" height="70"></rect>
+      <rect x="500" y="142" width="40" height="18" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <rect x="572" y="130" width="3" height="70" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <path d="M 570 152 L 720 152 L 755 200 L 570 200 Z"></path>
+      
+      <rect x="25" y="200" width="740" height="12"></rect>
+      
+      <rect x="540" y="0" width="7" height="38"></rect>
+      <rect x="500" y="-12" width="90" height="14" transform="translate(0,12)"></rect>
+      <circle cx="516" cy="-8" r="4" transform="translate(0,12)"></circle>
+      <circle cx="546" cy="-8" r="4" transform="translate(0,12)"></circle>
+      <circle cx="576" cy="-8" r="4" transform="translate(0,12)"></circle>
+      
+      <circle cx="170" cy="228" r="55"></circle>
+      <circle cx="170" cy="228" r="20" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="690" cy="228" r="48"></circle>
+      <circle cx="690" cy="228" r="17" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+  
+  <symbol id="truck-ultra" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 20 20 L 640 30 L 640 110 L 490 110 L 490 165 L 20 165 Z"></path>
+      
+      <rect x="310" y="30" width="3" height="80" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <rect x="500" y="122" width="95" height="80"></rect>
+      <rect x="512" y="135" width="48" height="22" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      <rect x="595" y="122" width="3" height="80" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+      
+      <path d="M 598 142 L 745 142 L 780 200 L 598 200 Z"></path>
+      
+      <rect x="15" y="200" width="775" height="12"></rect>
+      
+      <rect x="560" y="-5" width="8" height="32" transform="translate(0,5)"></rect>
+      <rect x="515" y="-18" width="100" height="14" transform="translate(0,5)"></rect>
+      <circle cx="532" cy="-14" r="4" transform="translate(0,5)"></circle>
+      <circle cx="563" cy="-14" r="4" transform="translate(0,5)"></circle>
+      <circle cx="595" cy="-14" r="4" transform="translate(0,5)"></circle>
+      
+      <circle cx="150" cy="232" r="58"></circle>
+      <circle cx="150" cy="232" r="22" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="225" cy="232" r="58"></circle>
+      <circle cx="225" cy="232" r="22" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      
+      <circle cx="720" cy="232" r="52"></circle>
+      <circle cx="720" cy="232" r="20" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+  
+  <symbol id="truck-adt" viewBox="0 0 800 280">
+    <g style="fill: var(--body, #0F0F10)">
+      
+      <path d="M 25 80 L 425 88 L 425 175 L 70 175 L 25 165 Z"></path>
+      
+      <rect x="230" y="88" width="3" height="87" class="hub" style="fill: var(--hub, #FFFFFF)"></rect>
+
+      
+      <rect x="425" y="148" width="35" height="50"></rect>
+      
+      <circle cx="442" cy="172" r="6" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+
+      
+      
+      <rect x="460" y="180" width="280" height="20"></rect>
+      
+      <path d="M 535 90 L 625 90 L 640 122 L 525 122 Z"></path>
+      <rect x="525" y="122" width="115" height="62"></rect>
+      
+      <path d="M 540 132 L 615 132 L 615 158 L 540 158 Z" class="hub" style="fill: var(--hub, #FFFFFF)"></path>
+      
+      <path d="M 640 138 L 720 138 L 745 180 L 640 180 Z"></path>
+
+      
+      <rect x="572" y="50" width="6" height="42"></rect>
+      <rect x="540" y="38" width="70" height="12"></rect>
+      <circle cx="554" cy="32" r="3"></circle>
+      <circle cx="575" cy="32" r="3"></circle>
+      <circle cx="596" cy="32" r="3"></circle>
+
+      
+      <circle cx="110" cy="218" r="40"></circle>
+      <circle cx="110" cy="218" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="210" cy="218" r="40"></circle>
+      <circle cx="210" cy="218" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+      <circle cx="660" cy="218" r="42"></circle>
+      <circle cx="660" cy="218" r="14" class="hub" style="fill: var(--hub, #FFFFFF)"></circle>
+    </g>
+  </symbol>
+
+</svg>
+
+<!-- =================== NAV =================== -->
+<nav class="nav">
+  <a class="brand" href="#top">
+    <img src="assets/pronto_logo_white.svg" alt="Pronto" />
+    <span class="ver">AHS · OEM REGISTRY</span>
+  </a>
+  <div class="links">
+    <a href="#oems" class="active">Approved Manufacturers</a>
+    <a href="#editions">AHS Editions</a>
+    <a href="#proof">Deployments</a>
+    <a href="#cta">Contact</a>
+  </div>
+  <span class="spacer"></span>
+  <a class="cta" href="#cta">Schedule a Consultation <span class="arr"></span></a>
+</nav>
+
+<!-- =================== HERO =================== -->
+<header id="top" class="hero">
+  <div class="photo"></div>
+  <div class="scrim"></div>
+
+  <div class="ticker">
+    <span><span class="dot"></span>OEM-AGNOSTIC AHS</span>
+    <span>3 APPROVED MANUFACTURERS</span>
+    <span>11 MODELS LISTED</span>
+  </div>
+
+  <div class="inner">
+    <div>
+      <div class="eyebrow">
+        <span class="pill">REGISTRY</span>
+        APPROVED MANUFACTURERS · PRONTO AHS
+      </div>
+      <h1 class="head">One autonomy stack.<br/><em>Every</em> haul truck<br/>that earns its keep.</h1>
+    </div>
+    <p class="sub">Pronto AHS retrofits the haul trucks you already own. The same software, the same drive-by-wire kit, the same Fleet Management System — calibrated for each chassis. These are the manufacturers, and the models, on the approved list today.</p>
+  </div>
+</header>
+
+<!-- =================== STATS STRIP =================== -->
+<section class="stats">
+  <div class="row">
+    <div class="label">01 / Production Footprint</div>
+    <h2>Mixed-OEM autonomy, in production. Not a pilot, not a slide.</h2>
+  </div>
+  <div class="grid">
+    <div class="stat">
+      <div class="num">2M<sup>+</sup></div>
+      <div class="key">Tons Autonomous</div>
+      <div class="desc">Limestone hauled by a mixed Cat &amp; Komatsu fleet at Heidelberg Materials' Lake Bridgeport quarry in under eight months.</div>
+    </div>
+    <div class="stat">
+      <div class="num">100<sup>+</sup></div>
+      <div class="key">Trucks Contracted</div>
+      <div class="desc">Pronto AHS deployments under the global Heidelberg Materials agreement, rolling out across a dozen sites worldwide.</div>
+    </div>
+    <div class="stat">
+      <div class="num">3</div>
+      <div class="key">AHS Editions</div>
+      <div class="desc">Vision, VLR, and VLR 360 — a tiered architecture from quarry-class trucks up to the 400-ton ultra-class.</div>
+    </div>
+    <div class="stat">
+      <div class="num">1</div>
+      <div class="key">Autonomy Stack</div>
+      <div class="desc">One Pronto AHS runs across every approved OEM. No vendor lock-in, no replacement fleet, no parallel software.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== REGISTRY STRIP =================== -->
+<section class="registry">
+  <div class="top">
+    <span class="label">Classes on the registry</span>
+    <h3>Four chassis classes. One Pronto AHS.</h3>
+    <span class="legend">Drawings at relative scale · sensor stack shown</span>
+  </div>
+  <div class="row">
+    <div class="cls scale-1">
+      <svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-mid"/></svg>
+      <div>
+        <div class="k">Class · Rigid</div>
+        <div class="v">Mid-tonnage haul</div>
+        <div class="n">HD605, Cat 775G — 60-70 t · the quarry workhorse</div>
+      </div>
+    </div>
+    <div class="cls scale-2">
+      <svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-large"/></svg>
+      <div>
+        <div class="k">Class · Rigid</div>
+        <div class="v">Large haul</div>
+        <div class="n">HD785, Cat 777G &amp; 785C — 100-150 t</div>
+      </div>
+    </div>
+    <div class="cls scale-3">
+      <svg class="truck" viewBox="0 0 800 280"><use href="#truck-ultra"/></svg>
+      <div>
+        <div class="k">Class · Ultra</div>
+        <div class="v">Ultra-class haul</div>
+        <div class="n">Cat 798, Komatsu 980 — 400 t · VLR / VLR 360 only</div>
+      </div>
+    </div>
+    <div class="cls scale-1-adt">
+      <svg class="truck" viewBox="0 0 800 280"><use href="#truck-adt"/></svg>
+      <div>
+        <div class="k">Class · Articulated</div>
+        <div class="v">ADT</div>
+        <div class="n">Bell B30E - B60E — 28-55 t · site &amp; aggregate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =================== OEM INDEX =================== -->
+<section id="oems" class="oems-head">
+  <div class="label">02 / Approved Manufacturers</div>
+  <div>
+    <h2>Three OEMs.<br/>One <em>registry</em>.</h2>
+  </div>
+</section>
+
+<div class="oem-index-wrap">
+  <div class="oem-index">
+    <a href="#komatsu">
+      <div class="ix-top">
+        <span class="ix-meta">01 / 03</span>
+        <span class="ix-meta">Rigid · Quarry · Mine</span>
+      </div>
+      <div class="ix-name">Komatsu</div>
+      <image-slot id="ix-komatsu" class="ix-slot" shape="rect" fit="contain" src="assets/sil_truck-rigid-mid.png" placeholder="Drop a Komatsu render"></image-slot>
+      <div class="ix-top">
+        <span class="ix-tag">Komatsu Smart Quarry Autonomous</span>
+        <span class="ix-arr"></span>
+      </div>
+    </a>
+    <a href="#caterpillar">
+      <div class="ix-top">
+        <span class="ix-meta">02 / 03</span>
+        <span class="ix-meta">Rigid · Quarry · Mine</span>
+      </div>
+      <div class="ix-name">Caterpillar</div>
+      <image-slot id="ix-cat" class="ix-slot" shape="rect" fit="contain" src="assets/sil_truck-rigid-mid.png" placeholder="Drop a Cat render"></image-slot>
+      <div class="ix-top">
+        <span class="ix-tag">Mixed-fleet, validated production</span>
+        <span class="ix-arr"></span>
+      </div>
+    </a>
+    <a href="#bell">
+      <div class="ix-top">
+        <span class="ix-meta">03 / 03</span>
+        <span class="ix-meta">Articulated · ADT</span>
+      </div>
+      <div class="ix-name">Bell Equipment</div>
+      <image-slot id="ix-bell" class="ix-slot" shape="rect" fit="contain" src="assets/pronto_truck_transparent.png" placeholder="Drop a Bell render"></image-slot>
+      <div class="ix-top">
+        <span class="ix-tag">Exclusive U.S. partner · Bell Trucks America</span>
+        <span class="ix-arr"></span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- =================== KOMATSU =================== -->
+<section id="komatsu" class="oem">
+  <div class="mark">
+    <div class="num">01 / 03 · Manufacturer</div>
+    <div class="name">Komatsu <span>Rigid frame haul · Quarry &amp; mining</span></div>
+    <div class="status"><span class="live"></span>In production</div>
+  </div>
+
+  <div class="body">
+    <div class="partner">
+      <div>
+        <div class="pk">Partnership</div>
+        <div class="pv">Komatsu Smart Quarry Autonomous, powered by Pronto</div>
+        <div class="pn">Announced August 2025 with Komatsu North America. Available through Komatsu's dealer network — retrofit existing trucks or order new equipped from the factory.</div>
+      </div>
+      <div>
+        <div class="pk">Reference Site</div>
+        <div class="pv">Komatsu Arizona Proving Grounds</div>
+        <div class="pn">HD605-10 demo loaded by a WA700-8 wheel loader.</div>
+      </div>
+    </div>
+    <div class="copy">
+      <p><strong>Komatsu was the first OEM to formally partner with Pronto</strong> to bring AHS to the quarry market. Komatsu Smart Quarry Autonomous, powered by Pronto, integrates Pronto's vision-first autonomy directly into quarry-sized Komatsu haul trucks and ties the fleet into Komatsu's Smart Quarry Site fleet-management suite — so the same dealer that services the iron also services the autonomy.</p>
+      <p>The Lake Bridgeport, Texas production fleet pairs Komatsu HD605-8 and next-generation HD605-10 rigid-frame trucks with Caterpillar 775Gs on a single Pronto AHS — the world's first fully autonomous mixed-OEM quarry fleet in commercial production.</p>
+    </div>
+  </div>
+
+  
+  <div class="oem-anchor has-slot">
+    <div class="anchor-label">Flagship chassis · approved &amp; in production</div>
+    <image-slot id="anchor-komatsu" class="anchor-slot" shape="rect" fit="contain" src="assets/sil_truck-rigid-mid.png" placeholder="Drop a Komatsu HD605-10 render"></image-slot>
+    <div class="anchor-meta">
+      <span class="flag">Featured · Mixed-fleet flagship</span>
+      <span class="model">HD605-10</span>
+      <span class="spec">63 t · Rigid · Heidelberg fleet</span>
+    </div>
+  </div>
+
+  <div class="lineup-head">
+    <div></div>
+    <div>Model</div>
+    <div class="h-class">Class</div>
+    <div>Payload</div>
+    <div class="h-frame">Frame</div>
+    <div class="h-status">Status</div>
+  </div>
+
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">01</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-mid"/></svg></div>
+    <div class="model">HD605-10 <small>Flagship · Heidelberg Lake Bridgeport fleet</small></div>
+    <div class="cell c-class">Quarry haul</div>
+    <div class="cell mono">63 t</div>
+    <div class="cell c-frame">Rigid</div>
+    <div class="cell c-status"><span class="badge prod">Production</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">02</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-mid"/></svg></div>
+    <div class="model">HD605-8 <small>Predecessor generation · live in mixed fleet</small></div>
+    <div class="cell c-class">Quarry haul</div>
+    <div class="cell mono">63 t</div>
+    <div class="cell c-frame">Rigid</div>
+    <div class="cell c-status"><span class="badge prod">Production</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">03</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-large"/></svg></div>
+    <div class="model">HD785-7 <small>Mid-tier open-pit hauler</small></div>
+    <div class="cell c-class">Mining haul</div>
+    <div class="cell mono">100 t</div>
+    <div class="cell c-frame">Rigid</div>
+    <div class="cell c-status"><span class="badge val">Validated</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">04</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-ultra"/></svg></div>
+    <div class="model">980E-5 <small>Ultra-class — VLR / VLR 360 editions only</small></div>
+    <div class="cell c-class">Ultra-class</div>
+    <div class="cell mono">400 t</div>
+    <div class="cell c-frame">Rigid · Electric Drive</div>
+    <div class="cell c-status"><span class="badge dev">In Development</span></div>
+  </div>
+</section>
+
+<!-- =================== CATERPILLAR =================== -->
+<section id="caterpillar" class="oem">
+  <div class="mark">
+    <div class="num">02 / 03 · Manufacturer</div>
+    <div class="name">Caterpillar <span>Rigid frame haul · Quarry &amp; mining</span></div>
+    <div class="status"><span class="live"></span>In production</div>
+  </div>
+
+  <div class="body">
+    <div class="partner">
+      <div>
+        <div class="pk">Deployment</div>
+        <div class="pv">Heidelberg Materials · Lake Bridgeport, TX</div>
+        <div class="pn">Caterpillar 775Gs operating alongside Komatsu HD605s on a single Pronto AHS — North America's first autonomous mixed-fleet quarry in commercial production.</div>
+      </div>
+      <div>
+        <div class="pk">Roadmap</div>
+        <div class="pv">Ultra-class extension (Cat 798)</div>
+        <div class="pn">VLR 360 sensor stack engineered to retrofit Cat's largest haulers for deep-pit hard-rock mining.</div>
+      </div>
+    </div>
+    <div class="copy">
+      <p><strong>Caterpillar trucks operate on Pronto AHS today in a production-grade aggregates fleet.</strong> At Heidelberg's Lake Bridgeport site, Cat 775G rigid-frame haulers share haul roads, loaders and dump points with Komatsu HD605s — managed by one autonomy stack, one Fleet Management System, one set of haul-road maps.</p>
+      <p>The partnership demonstrates Pronto's central thesis: autonomy at scale means automating the iron operators already own. Heidelberg Materials did not buy a replacement fleet; it converted the one it had.</p>
+    </div>
+  </div>
+
+  
+  <div class="oem-anchor has-slot">
+    <div class="anchor-label">Flagship chassis · approved &amp; in production</div>
+    <image-slot id="anchor-cat" class="anchor-slot" shape="rect" fit="contain" src="assets/sil_truck-rigid-mid.png" placeholder="Drop a Cat 775G render"></image-slot>
+    <div class="anchor-meta">
+      <span class="flag">Featured · Mixed-fleet flagship</span>
+      <span class="model">Cat 775G</span>
+      <span class="spec">70 t · Rigid · Lake Bridgeport production</span>
+    </div>
+  </div>
+
+  <div class="lineup-head">
+    <div></div>
+    <div>Model</div>
+    <div class="h-class">Class</div>
+    <div>Payload</div>
+    <div class="h-frame">Frame</div>
+    <div class="h-status">Status</div>
+  </div>
+
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">01</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-mid"/></svg></div>
+    <div class="model">Cat 775G <small>Flagship · Lake Bridgeport mixed-fleet</small></div>
+    <div class="cell c-class">Quarry haul</div>
+    <div class="cell mono">70 t</div>
+    <div class="cell c-frame">Rigid</div>
+    <div class="cell c-status"><span class="badge prod">Production</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">02</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-large"/></svg></div>
+    <div class="model">Cat 777G <small>Long-haul ramps, multi-shift duty cycles</small></div>
+    <div class="cell c-class">Quarry haul</div>
+    <div class="cell mono">100 t</div>
+    <div class="cell c-frame">Rigid</div>
+    <div class="cell c-status"><span class="badge val">Validated</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">03</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-rigid-large"/></svg></div>
+    <div class="model">Cat 785C <small>Large-class open-pit hauler</small></div>
+    <div class="cell c-class">Mining haul</div>
+    <div class="cell mono">150 t</div>
+    <div class="cell c-frame">Rigid</div>
+    <div class="cell c-status"><span class="badge val">Validated</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">04</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-ultra"/></svg></div>
+    <div class="model">Cat 798 AC <small>Ultra-class — VLR 360 edition only</small></div>
+    <div class="cell c-class">Ultra-class</div>
+    <div class="cell mono">400 t</div>
+    <div class="cell c-frame">Rigid · AC Drive</div>
+    <div class="cell c-status"><span class="badge dev">In Development</span></div>
+  </div>
+</section>
+
+<!-- =================== BELL =================== -->
+<section id="bell" class="oem">
+  <div class="mark">
+    <div class="num">03 / 03 · Manufacturer</div>
+    <div class="name">Bell Equipment <span>Articulated dump trucks · Quarry &amp; site</span></div>
+    <div class="status"><span class="live"></span>In production</div>
+  </div>
+
+  <div class="body">
+    <div class="partner">
+      <div>
+        <div class="pk">Partnership</div>
+        <div class="pv">Bell Trucks America · Exclusive U.S. autonomy partner</div>
+        <div class="pn">Pronto is the exclusive provider of autonomous and advanced driver-assistance solutions to Bell Trucks America — master distributor of Bell Equipment haulage in the U.S. and Mexico.</div>
+      </div>
+      <div>
+        <div class="pk">Coverage</div>
+        <div class="pv">North America (U.S. &amp; Mexico)</div>
+        <div class="pn">Articulated dump trucks for site, aggregate, and soft-ground haul.</div>
+      </div>
+    </div>
+    <div class="copy">
+      <p><strong>Bell brought articulated dump trucks onto the Pronto AHS roster.</strong> Where Komatsu and Caterpillar cover the rigid-frame quarry and mining classes, Bell extends the platform to articulated haul — the right tool for variable terrain, soft ground, and tight site geometries that a rigid-frame truck cannot work.</p>
+      <p>Bell Trucks America's exclusive autonomy agreement with Pronto means every Bell ADT delivered into the U.S. and Mexico can be Pronto-equipped from new, or retrofitted post-delivery, through the same dealer network that services the trucks today.</p>
+    </div>
+  </div>
+
+  
+  <div class="oem-anchor has-slot">
+    <div class="anchor-label">Pronto-equipped · production reference</div>
+    <image-slot id="anchor-bell" class="anchor-slot" shape="rect" fit="contain" src="assets/pronto_truck_transparent.png" placeholder="Drop a Bell render"></image-slot>
+    <div class="anchor-meta">
+      <span class="flag">Featured · In production</span>
+      <span class="model">Bell B50E</span>
+      <span class="spec">45 t · Articulated · Lake Bridgeport, TX</span>
+    </div>
+  </div>
+
+  <div class="lineup-head">
+    <div></div>
+    <div>Model</div>
+    <div class="h-class">Class</div>
+    <div>Payload</div>
+    <div class="h-frame">Frame</div>
+    <div class="h-status">Status</div>
+  </div>
+
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">01</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-adt"/></svg></div>
+    <div class="model">Bell B60E <small>Flagship · Largest ADT in production</small></div>
+    <div class="cell c-class">Site &amp; aggregate</div>
+    <div class="cell mono">55 t</div>
+    <div class="cell c-frame">Articulated</div>
+    <div class="cell c-status"><span class="badge prod">Production</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">02</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-adt"/></svg></div>
+    <div class="model">Bell B50E <small>Variable terrain &amp; long-cycle hauls</small></div>
+    <div class="cell c-class">Site &amp; aggregate</div>
+    <div class="cell mono">45 t</div>
+    <div class="cell c-frame">Articulated</div>
+    <div class="cell c-status"><span class="badge prod">Production</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">03</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-adt"/></svg></div>
+    <div class="model">Bell B45E <small>Mid-class articulated workhorse</small></div>
+    <div class="cell c-class">Site &amp; aggregate</div>
+    <div class="cell mono">41 t</div>
+    <div class="cell c-frame">Articulated</div>
+    <div class="cell c-status"><span class="badge val">Validated</span></div>
+  </div>
+  <div class="lineup-row">
+    <div class="icon"><span class="ix">04</span><svg class="truck" viewBox="0 0 800 280"><use href="#truck-adt"/></svg></div>
+    <div class="model">Bell B30E <small>Compact ADT for aggregate haul</small></div>
+    <div class="cell c-class">Site &amp; aggregate</div>
+    <div class="cell mono">28 t</div>
+    <div class="cell c-frame">Articulated</div>
+    <div class="cell c-status"><span class="badge val">Validated</span></div>
+  </div>
+</section>
+
+<!-- =================== EDITIONS =================== -->
+<section id="editions" class="editions">
+  <div class="editions-head">
+    <div class="label">03 / AHS Editions</div>
+    <h2>Same registry. Three sensor stacks. Pick the physics that match your site.</h2>
+  </div>
+
+  <div class="editions-grid">
+    <article class="edition">
+      <div class="ek">Pronto AHS · Vision</div>
+      <h3>Vision-only.<br/>Zero-entry quarry autonomy.</h3>
+      <p>HDR cameras and an AI-first design philosophy. The most affordable, fastest-to-deploy Pronto AHS edition — optimized for labor savings and retrofit simplicity on quarry-class trucks.</p>
+      <div class="sensors"><span>HDR Cameras</span><span>AI Perception</span><span>Vision-First</span></div>
+    </article>
+
+    <article class="edition feat">
+      <span class="tag">New · 2026</span>
+      <div class="ek">Pronto AHS · VLR</div>
+      <h3>Vision + Lidar + Radar.<br/>For deep-pit mining.</h3>
+      <p>Active sensing fortifies the vision stack for the kinetic energy of ultra-class haulers and the dense fog, dust, and snow conditions that ground optical-only systems.</p>
+      <div class="sensors"><span>Vision</span><span>Lidar</span><span>Radar</span><span>All-Weather</span></div>
+    </article>
+
+    <article class="edition">
+      <div class="ek">Pronto AHS · VLR 360</div>
+      <h3>Full 360° array.<br/>Ultra-class compliance.</h3>
+      <p>A comprehensive 360-degree sensor array that digitizes the entire vehicle perimeter — built for complex maneuvering in congested, mixed-traffic zones on the world's largest haulers.</p>
+      <div class="sensors"><span>360° Perimeter</span><span>Lidar</span><span>Radar</span><span>Mixed-Traffic</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- =================== PROOF =================== -->
+<section id="proof" class="proof">
+  <div class="row">
+    <div class="label">04 / Reference Deployment</div>
+    <div>
+      <h2>Lake Bridgeport, TX. The mixed-fleet proof point.</h2>
+      <p class="lede">Over an eight-month production run, Heidelberg Materials' Lake Bridgeport quarry autonomously hauled more than two million tons of limestone — using a single Pronto AHS to coordinate Caterpillar 775Gs alongside Komatsu HD605-8 and HD605-10 rigid-frame trucks.</p>
+      <div class="pulls">
+        <div class="pull"><div class="k">Operator</div><div class="v"><strong>Heidelberg Materials</strong> — one of the world's largest integrated manufacturers of building materials.</div></div>
+        <div class="pull"><div class="k">OEMs</div><div class="v">Caterpillar 775G + Komatsu HD605-8 / HD605-10, on one autonomy stack.</div></div>
+        <div class="pull"><div class="k">Result</div><div class="v"><strong>2M+ tons</strong> moved autonomously in under <strong>8 months</strong> — equivalent to ~20,000 freight cars of limestone.</div></div>
+        <div class="pull"><div class="k">Next</div><div class="v">Rolling out across Mitchell (Indiana) and Servtex (Texas) in 2026; 100+ trucks globally over the next three years.</div></div>
+      </div>
+    </div>
+    <aside class="quote photo" style="background-image: url('assets/pronto_loading_aether.jpg');">
+      <div class="scrim"></div>
+      <div class="inner">
+        <div class="caption"><span class="dot"></span>Lake Bridgeport quarry · Bell loaded by Cat wheel loader</div>
+        <div class="q">True scalability in the aggregates industry requires the ability to automate the iron you already own.</div>
+        <div class="attr">
+          <span class="who">Anthony Levandowski</span>
+          <span>CEO · Pronto.ai</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- =================== CTA =================== -->
+<section id="cta" class="cta-band">
+  <div class="row">
+    <h2>Bring the fleet.<br/>We'll bring the <em>autonomy</em>.</h2>
+    <div>
+      <p class="lede">Pronto AHS converts existing OEM haul trucks — no replacement fleet, no vendor lock-in. Tell us what you run today, and we'll scope a conversion plan that maps your iron onto the right AHS Edition.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#">Schedule a Consultation <span class="arr"></span></a>
+        <a class="btn secondary" href="#">Download System Overview</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="row">
+    <img src="assets/pronto_logo_white.svg" alt="Pronto" />
+    <span class="mono">PRONTO AHS · OEM REGISTRY · V1.0</span>
+    <span class="mono">© Pronto.ai, Inc. — Autonomy Simplified</span>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('section, .hero .inner, .oem-index-wrap').forEach(el => {
+    el.classList.add('reveal'); io.observe(el);
+  });
+</script>
+</body>
+</html>
