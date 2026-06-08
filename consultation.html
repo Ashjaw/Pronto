@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto · Schedule a Consultation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="project/colors_and_type.css" />
+<style>
+  :root { --page-x: 40px; }
+  html, body { background: var(--pronto-white); }
+  body { overflow-x: hidden; }
+  a { text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 32px;
+    padding: 18px var(--page-x);
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav .brand { display: flex; align-items: center; gap: 16px; }
+  .nav .brand img { height: 18px; width: auto; display: block; }
+  .nav .brand .ver {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.16);
+  }
+  .nav .links { display: flex; gap: 28px; margin-left: 32px; }
+  .nav .links a {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--n-300);
+    transition: color var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .links a:hover { color: var(--pronto-white); }
+  .nav .spacer { flex: 1; }
+  .nav .cta {
+    font-family: var(--font-sans); font-weight: 500; font-size: 13px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.1); color: var(--pronto-white);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .cta:hover { opacity: 0.7; }
+
+  /* Page header */
+  .page-head {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 96px var(--page-x) 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .page-head .eyebrow {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); margin-bottom: 24px; display: block;
+  }
+  .page-head h1 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(52px, 6vw, 96px); line-height: 0.96; letter-spacing: -0.03em;
+    color: var(--pronto-white); margin: 0; text-wrap: balance;
+  }
+  .page-head .sub {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 17px; line-height: 1.45; color: var(--n-300); max-width: 52ch; margin-top: 24px;
+  }
+
+  /* Form layout */
+  .form-layout {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  /* Left panel */
+  .form-aside {
+    padding: 72px var(--page-x) 72px var(--page-x);
+    border-right: 1px solid var(--divider);
+    background: var(--surface-alt);
+  }
+  .form-aside .aside-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted); margin-bottom: 32px; display: block;
+  }
+  .step {
+    display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start;
+    padding: 28px 0; border-top: 1px solid var(--divider);
+  }
+  .step:last-of-type { border-bottom: 1px solid var(--divider); }
+  .step .step-num {
+    font-family: var(--font-mono); font-weight: 700; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted);
+    padding-top: 2px;
+  }
+  .step .step-head {
+    font-family: var(--font-sans); font-weight: 500; font-size: 17px;
+    letter-spacing: -0.01em; margin-bottom: 6px; color: var(--fg);
+  }
+  .step .step-body {
+    font-family: var(--font-body); font-weight: 300; font-size: 13px;
+    line-height: 1.45; color: var(--fg-muted); margin: 0;
+  }
+  .aside-note {
+    margin-top: 40px; padding: 20px;
+    border: 1px solid var(--divider); background: var(--pronto-white);
+  }
+  .aside-note .note-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--fg-muted); margin-bottom: 10px; display: block;
+  }
+  .aside-note p {
+    font-family: var(--font-body); font-weight: 300; font-size: 13px;
+    line-height: 1.45; color: var(--fg); margin: 0;
+  }
+
+  /* Form panel */
+  .form-main { padding: 72px 56px 72px 56px; }
+
+  /* Form sections */
+  .form-section { margin-bottom: 52px; }
+  .form-section-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-muted); margin-bottom: 24px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--divider); display: block;
+  }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .field-row.full { grid-template-columns: 1fr; }
+  .field { display: grid; gap: 8px; }
+  .field label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg);
+  }
+  .field label .opt {
+    font-family: var(--font-body); font-weight: 300; font-size: 11px;
+    text-transform: none; letter-spacing: 0; color: var(--fg-muted);
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font-family: var(--font-body); font-weight: 300; font-size: 15px;
+    color: var(--fg); background: var(--pronto-white);
+    border: 1px solid var(--divider); padding: 13px 14px;
+    outline: none; width: 100%; box-sizing: border-box;
+    -webkit-appearance: none; appearance: none;
+    transition: border-color var(--dur-quick) var(--ease-pronto);
+    border-radius: 0;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus { border-color: var(--pronto-black); }
+  .field input::placeholder,
+  .field textarea::placeholder { color: var(--n-400); }
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%230F0F10' stroke-width='1.5' fill='none' stroke-linecap='square'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 38px; cursor: pointer;
+  }
+  .field textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+
+  /* Checkbox grid */
+  .check-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--divider); border: 1px solid var(--divider);
+    margin-top: 4px;
+  }
+  .check-item {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--pronto-white); padding: 14px 16px;
+    cursor: pointer; transition: background var(--dur-quick) var(--ease-pronto);
+  }
+  .check-item:hover { background: var(--surface-alt); }
+  .check-item input[type="checkbox"] {
+    width: 16px; height: 16px; flex: 0 0 auto; cursor: pointer;
+    border: 1px solid var(--divider-strong); background: var(--pronto-white);
+    -webkit-appearance: none; appearance: none; position: relative;
+    transition: background var(--dur-quick), border-color var(--dur-quick);
+    border-radius: 0;
+  }
+  .check-item input[type="checkbox"]:checked {
+    background: var(--pronto-black); border-color: var(--pronto-black);
+  }
+  .check-item input[type="checkbox"]:checked::after {
+    content: ""; position: absolute; left: 4px; top: 1px;
+    width: 5px; height: 9px;
+    border-right: 1.5px solid var(--pronto-white);
+    border-bottom: 1.5px solid var(--pronto-white);
+    transform: rotate(40deg);
+  }
+  .check-item .check-label {
+    font-family: var(--font-body); font-weight: 300; font-size: 14px;
+    color: var(--fg); user-select: none;
+  }
+
+  /* Submit */
+  .form-submit { display: flex; align-items: center; gap: 20px; margin-top: 8px; }
+  .btn-submit {
+    font-family: var(--font-sans); font-weight: 500; font-size: 14px;
+    padding: 16px 28px; background: var(--pronto-black); color: var(--pronto-white);
+    border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 12px;
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+    flex-shrink: 0;
+  }
+  .btn-submit:hover { opacity: 0.7; }
+  .submit-note {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 12px; color: var(--fg-muted); line-height: 1.5;
+  }
+
+  /* Success state */
+  .form-success {
+    display: none; padding: 96px 56px;
+    align-items: center; justify-content: center;
+  }
+  .form-success.visible { display: flex; }
+  .success-inner { max-width: 500px; }
+  .success-eyebrow {
+    font-family: var(--font-mono); font-weight: 700; font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .success-eyebrow::before {
+    content: ""; width: 8px; height: 8px;
+    background: var(--status-success); display: inline-block; flex: 0 0 auto;
+  }
+  .success-inner h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 4vw, 64px); line-height: 0.96; letter-spacing: -0.025em;
+    color: var(--fg); margin: 0 0 20px;
+  }
+  .success-inner p {
+    font-family: var(--font-body); font-weight: 300; font-size: 16px;
+    line-height: 1.5; color: var(--fg-muted); margin: 0 0 32px;
+  }
+  .success-inner .back-link {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg); border-bottom: 1px solid var(--fg); padding-bottom: 2px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px var(--page-x); background: var(--pronto-black);
+    color: var(--n-300); border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  footer .row { display: flex; justify-content: space-between; align-items: center; }
+  footer .mono {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  footer img { height: 16px; width: auto; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 800ms var(--ease-pronto), transform 800ms var(--ease-pronto); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .nav .links { display: none; }
+    .form-layout { grid-template-columns: 1fr; }
+    .form-aside { border-right: 0; border-bottom: 1px solid var(--divider); }
+    .form-main { padding: 56px var(--page-x); }
+    .field-row { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+    .form-submit { flex-direction: column; align-items: flex-start; }
+    .form-success { padding: 72px var(--page-x); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <a href="index.html" style="display:flex;"><img src="assets/pronto_logo_white.svg" alt="Pronto" /></a>
+    <span class="ver">AHS · V1.0</span>
+  </div>
+  <div class="links">
+    <a href="index.html#oems">OEMs</a>
+    <a href="index.html#stats">Platform</a>
+    <a href="index.html#compat">Compatibility</a>
+    <a href="#">Customers</a>
+    <a href="#">News</a>
+  </div>
+  <span class="spacer"></span>
+  <a class="cta" href="consultation.html">Schedule a Consultation</a>
+</nav>
+
+<header class="page-head reveal">
+  <span class="eyebrow">03 · Consultation</span>
+  <h1>Schedule a<br/>consultation.</h1>
+  <p class="sub">Tell us about your fleet and operation. Our team will scope a tailored AHS conversion plan and be in touch within two business days.</p>
+</header>
+
+<div class="form-layout">
+
+  <aside class="form-aside reveal">
+    <span class="aside-label">What happens next</span>
+
+    <div class="step">
+      <span class="step-num">01</span>
+      <div>
+        <div class="step-head">Team review</div>
+        <p class="step-body">Our technical team reviews your submission and confirms suitability within 2 business days.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div>
+        <div class="step-head">Discovery call</div>
+        <p class="step-body">A 30-minute call to understand your site, your fleet, and your operational goals.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div>
+        <div class="step-head">Conversion plan</div>
+        <p class="step-body">We prepare a tailored AHS conversion and deployment proposal for your review.</p>
+      </div>
+    </div>
+
+    <div class="aside-note">
+      <span class="note-label">Existing deployments</span>
+      <p>Already running Pronto AHS? Contact your Customer Success lead directly for fleet expansion or support requests.</p>
+    </div>
+  </aside>
+
+  <div class="form-main reveal" id="formMain">
+    <form id="consultForm" novalidate>
+
+      <div class="form-section">
+        <span class="form-section-label">Your details</span>
+        <div class="field-row">
+          <div class="field">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Ashley" required />
+          </div>
+          <div class="field">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Jameson" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="job-title">Job title</label>
+            <input type="text" id="job-title" name="job_title" placeholder="VP Operations" required />
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Vale S.A." required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="opt">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000" />
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field">
+            <label for="country">Country / Region</label>
+            <select id="country" name="country" required>
+              <option value="" disabled selected>Select country</option>
+              <option>Australia</option>
+              <option>Brazil</option>
+              <option>Canada</option>
+              <option>Chile</option>
+              <option>Democratic Republic of the Congo</option>
+              <option>Ghana</option>
+              <option>Indonesia</option>
+              <option>Kazakhstan</option>
+              <option>Mexico</option>
+              <option>Peru</option>
+              <option>Russia</option>
+              <option>Saudi Arabia</option>
+              <option>South Africa</option>
+              <option>United States</option>
+              <option>Zimbabwe</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <span class="form-section-label">Your fleet</span>
+        <div class="field-row full">
+          <div class="field">
+            <label>OEM(s) in your fleet</label>
+            <div class="check-grid">
+              <label class="check-item">
+                <input type="checkbox" name="oem" value="komatsu" />
+                <span class="check-label">Komatsu</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="oem" value="caterpillar" />
+                <span class="check-label">Caterpillar</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="oem" value="bell" />
+                <span class="check-label">Bell Equipment</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="oem" value="other" />
+                <span class="check-label">Other</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="field-row" style="margin-top: 14px;">
+          <div class="field">
+            <label for="fleet-size">Haul truck count</label>
+            <select id="fleet-size" name="fleet_size">
+              <option value="" disabled selected>Select range</option>
+              <option>1–10 trucks</option>
+              <option>11–50 trucks</option>
+              <option>51–200 trucks</option>
+              <option>200+ trucks</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timeline">Deployment timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="" disabled selected>Select timeline</option>
+              <option>Under 6 months</option>
+              <option>6–12 months</option>
+              <option>12–24 months</option>
+              <option>24+ months</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <span class="form-section-label">Primary objective</span>
+        <div class="field-row full">
+          <div class="check-grid">
+            <label class="check-item">
+              <input type="checkbox" name="objective" value="cost" />
+              <span class="check-label">Reduce operating costs</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="objective" value="safety" />
+              <span class="check-label">Improve safety</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="objective" value="throughput" />
+              <span class="check-label">Increase throughput</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="objective" value="labour" />
+              <span class="check-label">Reduce labour dependency</span>
+            </label>
+          </div>
+        </div>
+        <div class="field-row full" style="margin-top: 14px;">
+          <div class="field">
+            <label for="notes">Additional context <span class="opt">(optional)</span></label>
+            <textarea id="notes" name="notes" placeholder="Tell us about your site, operation type, or any specific requirements..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">
+          Submit request
+          <span style="display:inline-block;width:14px;height:1px;background:currentColor;position:relative;">
+            <span style="position:absolute;right:0;top:-3px;width:6px;height:6px;border-right:1px solid currentColor;border-top:1px solid currentColor;transform:rotate(45deg);"></span>
+          </span>
+        </button>
+        <p class="submit-note">We'll respond within 2 business days.<br/>No sales pressure — just a direct conversation.</p>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="form-success" id="formSuccess">
+    <div class="success-inner">
+      <div class="success-eyebrow">Request received</div>
+      <h2>We'll be in touch shortly.</h2>
+      <p>Your consultation request has been submitted. Our team will review your details and reach out within 2 business days to schedule your discovery call.</p>
+      <a class="back-link" href="index.html">← Back to fleet overview</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="row">
+    <img src="assets/pronto_logo_white.svg" alt="Pronto" />
+    <span class="mono">PRONTO AHS · V1.0 · OEM-AGNOSTIC AUTONOMY</span>
+    <span class="mono">© Pronto AI · Equipment renders © respective OEMs</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.getElementById('consultForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const main = document.getElementById('formMain');
+    const success = document.getElementById('formSuccess');
+    main.style.display = 'none';
+    success.classList.add('visible');
+    window.scrollTo({ top: document.querySelector('.form-layout').offsetTop - 80, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
