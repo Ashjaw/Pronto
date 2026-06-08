@@ -1,0 +1,295 @@
+<!doctype html>
+<!-- Pitch Deck — Pronto AHS · Series Briefing 2026 -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto — Pitch Deck</title>
+<link rel="stylesheet" href="../project/colors_and_type.css" />
+<link rel="stylesheet" href="_deck.css" />
+<script src="deck-stage.js"></script>
+<script type="application/json" id="speaker-notes">
+[
+  "Pronto. Autonomy simplified. I'll keep this to 12 minutes — the company in one sentence, the market in three numbers, our wedge, and where we go from here.",
+  "Mining is the third-largest industry on earth and runs on a 1960s operating model: a person inside every haul truck, manually coordinated from a control room. Labor is scarce, accidents are common, and the largest single line item is people.",
+  "Three problems compound: a structural labor shortage at remote sites, a safety record the industry can no longer afford, and operational complexity from mixed-OEM fleets that nobody can dispatch in one system.",
+  "Pronto AHS is a software-first, OEM-agnostic autonomous haulage system. We layer onto the trucks operators already own. No fleet replacement. No vendor lock-in. Same trucks, autonomous overnight.",
+  "Three things make us different. AI-centric perception that generalizes across haul environments. OEM-agnostic by design — not a Caterpillar-only or Komatsu-only product. And resiliency engineering: built for dust, mud, and 50-degree pit walls, not closed-course demos.",
+  "The proof is the portfolio. We've put more truck models, from more OEMs, into autonomous production than any other AHS provider. Komatsu, Caterpillar, Volvo, Scania, Bell, VW. Twelve models. Five OEMs. Three continents.",
+  "Customers: Vale, Maaden, CRH, Heidelberg Materials, Rogers Group, Carmeuse. The industry's top operators, across hard rock, aggregates, and base metals. Each one is now expanding to additional sites.",
+  "The business model: per-truck SaaS plus deployment services. 100+ trucks under contract. 30 million autonomous ton-kilometers already hauled. Growing 3× year-over-year on contracted revenue.",
+  "Why now: the cost of compute, the maturity of edge AI, and a generational labor crisis in mining have all crossed the line in the same window. The next ten years of mining will be defined by who automates first.",
+  "Our roadmap: this year, scale to 100 trucks live. Next year, ship Rovers for full mixed-fleet coordination. Beyond, expand into adjacent earth-moving categories — quarrying, large construction, port handling.",
+  "What we need: capital to triple our deployment engineering team and stand up regional ops in South America and Australia. Existing investors are participating. We're opening up the round for one strategic partner who can accelerate that geographic expansion.",
+  "Pronto. The fastest path to autonomous haulage that already exists. Let's talk."
+]
+</script>
+<style>
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; height: 100%; align-items: center; padding: 200px 88px 140px; }
+  .pad { position: absolute; inset: 200px 88px 120px; }
+  .why-now-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+  .why-now-grid .item { display: grid; gap: 18px; padding-top: 28px; border-top: 1.5px solid var(--pronto-black); }
+  .why-now-grid .item .num { font-family: var(--font-mono); font-weight: 400; font-size: 14px; letter-spacing: 0.16em; color: var(--pronto-black); }
+  .why-now-grid .item h3 { font-family: var(--font-sans); font-weight: 400; font-size: 36px; line-height: 1.1; letter-spacing: -0.015em; margin: 0; }
+  .why-now-grid .item p { font-family: var(--font-body); font-weight: 300; font-size: 20px; line-height: 1.35; color: var(--fg-muted); margin: 0; }
+  .market-stat { display: grid; gap: 18px; padding: 60px 0; border-top: 1.5px solid var(--pronto-black); border-bottom: 1.5px solid var(--pronto-black); }
+  .market-stat .big { font-family: var(--font-sans); font-weight: 400; font-size: 240px; line-height: 0.85; letter-spacing: -0.04em; }
+  .market-stat .big sup { font-size: 0.35em; vertical-align: 0.8em; }
+</style>
+</head>
+<body>
+<deck-stage>
+
+  <!-- 01 Cover -->
+  <section class="slide dark" data-screen-label="01 Cover">
+    <div class="slide-frame"></div>
+    <div class="cover">
+      <img class="lockup-top" src="../assets/pronto_logo_white.svg" alt="Pronto" />
+      <p class="s-eyebrow" style="color: var(--pronto-white); margin-bottom: 32px;">Pitch · 2026</p>
+      <h1>Autonomy<br/>simplified.</h1>
+      <div class="meta">
+        <span>Pronto AHS</span>
+        <span>Software-first autonomous haulage</span>
+        <span style="color: var(--pronto-white);">Series Briefing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 The world today -->
+  <section class="slide" data-screen-label="02 World today">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">01</p>
+    <div class="pad" style="display: grid; align-content: center; gap: 56px;">
+      <p class="s-eyebrow">The world today</p>
+      <h2 class="s-h1" style="max-width: 22ch;">Mining is the third-largest industry on earth — and still runs on a <span class="hl">1960s operating model</span>.</h2>
+      <p class="s-body" style="font-size: 30px; max-width: 38ch;">A person inside every haul truck. Manual coordination from a control room. Labor is the largest line item. The cost is rising every year.</p>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>02 / 12</span></div>
+  </section>
+
+  <!-- 03 Problem -->
+  <section class="slide" data-screen-label="03 Problem">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">02 · Problem</p>
+    <div class="pad" style="display: grid; align-content: center; gap: 72px;">
+      <div style="display: grid; gap: 16px;">
+        <p class="s-eyebrow">Three compounding problems</p>
+        <h2 class="s-h2" style="max-width: 28ch;">Why every major operator is now scoping autonomy.</h2>
+      </div>
+      <div class="why-now-grid">
+        <div class="item">
+          <span class="num">01</span>
+          <h3>Labor shortage at scale</h3>
+          <p>Remote-site operator wages have doubled in 10 years. Retention is the #1 ops risk for every miner we talk to.</p>
+        </div>
+        <div class="item">
+          <span class="num">02</span>
+          <h3>Safety can't compound</h3>
+          <p>Haul-truck incidents remain the single largest source of severe injury in surface mining. Boards are no longer accepting the rate.</p>
+        </div>
+        <div class="item">
+          <span class="num">03</span>
+          <h3>Mixed-OEM complexity</h3>
+          <p>Every major operator runs Cat, Komatsu, and Volvo in the same pit. No single AHS vendor speaks to all of them.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>03 / 12</span></div>
+  </section>
+
+  <!-- 04 Solution -->
+  <section class="slide dark" data-screen-label="04 Solution">
+    <div class="slide-frame"></div>
+    <div style="position:absolute; inset: 200px 160px 140px; display: grid; align-content: center; gap: 56px;">
+      <p class="s-eyebrow" style="color: var(--pronto-white);">Pronto AHS</p>
+      <h2 class="s-h1" style="color: var(--pronto-white); max-width: 22ch;">A <span class="hl--solid" style="color: var(--pronto-black);">software-first</span>, OEM-agnostic autonomous haulage system.</h2>
+      <p class="s-body" style="color: var(--n-300); font-size: 30px; max-width: 36ch;">We layer onto the trucks operators already own. No fleet replacement. No vendor lock-in. Same trucks — autonomous in months.</p>
+    </div>
+    <div class="slide-foot"><span style="color: var(--n-300);">Pronto · Pitch Deck</span><span style="color: var(--n-300);">04 / 12</span></div>
+  </section>
+
+  <!-- 05 Differentiation -->
+  <section class="slide" data-screen-label="05 Differentiation">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">03 · Wedge</p>
+    <div class="pad" style="display: grid; align-content: center; gap: 64px;">
+      <h2 class="s-h2" style="max-width: 28ch;">Three things make Pronto AHS structurally different.</h2>
+      <div class="why-now-grid">
+        <div class="item">
+          <span class="num">AI-centric</span>
+          <h3>Perception that generalizes</h3>
+          <p>Trained on pit data across continents — not closed-course demos. Works in dust, rain, snow, and 50° pit walls.</p>
+        </div>
+        <div class="item">
+          <span class="num">OEM-agnostic</span>
+          <h3>One stack, every truck</h3>
+          <p>Cat, Komatsu, Volvo, Scania, Bell, VW. One platform, one dispatcher, one engineering team to coordinate.</p>
+        </div>
+        <div class="item">
+          <span class="num">Resilient</span>
+          <h3>Built for production, not pilots</h3>
+          <p>Drive-by-wire, edge compute, LTE+SAT comms. Engineered to keep hauling when the network drops.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>05 / 12</span></div>
+  </section>
+
+  <!-- 06 Battle-tested -->
+  <section class="slide" data-screen-label="06 Battle-tested">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">04 · In production</p>
+    <div class="two-col">
+      <div>
+        <p class="s-eyebrow" style="margin-bottom: 28px;">Battle-tested</p>
+        <h2 class="s-h2"><span class="hl">In production</span> across three continents and the world's most demanding pits.</h2>
+        <p class="s-body" style="font-size: 24px; margin-top: 32px; max-width: 36ch;">Hard rock, aggregates, base metals. Hot and cold sites. Single-OEM and mixed-OEM fleets. Pronto AHS is in the dirt.</p>
+      </div>
+      <div style="aspect-ratio: 16 / 11; background: var(--pronto-black) center/cover no-repeat; background-image: url('../assets/pronto_hero_rolling.jpg'); border: 1.5px solid var(--pronto-black);"></div>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>06 / 12</span></div>
+  </section>
+
+  <!-- 07 Traction -->
+  <section class="slide" data-screen-label="07 Traction">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">05 · Traction</p>
+    <div class="pad" style="display: grid; gap: 80px; align-content: center;">
+      <h2 class="s-h2" style="max-width: 22ch;">The proof is in the portfolio.</h2>
+      <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 28px;">
+        <div class="stat"><div class="num">3</div><div class="label">Continents</div><div class="desc">Operating across NA, SA, and EMEA.</div></div>
+        <div class="stat"><div class="num">12+</div><div class="label">Models</div><div class="desc">Across five different OEMs.</div></div>
+        <div class="stat"><div class="num">100+</div><div class="label">Trucks</div><div class="desc">Contracted to deploy in 36 months.</div></div>
+        <div class="stat"><div class="num">30M+</div><div class="label">Ton-km</div><div class="desc">Hauled autonomously to date.</div></div>
+        <div class="stat"><div class="num">3×</div><div class="label">YoY growth</div><div class="desc">Contracted recurring revenue.</div></div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>07 / 12</span></div>
+  </section>
+
+  <!-- 08 Customers -->
+  <section class="slide" data-screen-label="08 Customers">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">06 · Customers</p>
+    <div class="pad" style="display: grid; gap: 64px; align-content: center;">
+      <div style="display: grid; gap: 16px;">
+        <p class="s-eyebrow">Trusted by industry leaders</p>
+        <h2 class="s-h2" style="max-width: 24ch;">Every Pronto customer is now expanding to additional sites.</h2>
+      </div>
+      <div class="logo-grid">
+        <div class="cell"><div class="name">VALE</div></div>
+        <div class="cell"><div class="name">MAADEN</div></div>
+        <div class="cell"><div class="name">CRH</div></div>
+        <div class="cell"><div class="name">HEIDELBERG MATERIALS</div></div>
+        <div class="cell"><div class="name">ROGERS GROUP</div></div>
+        <div class="cell"><div class="name">CARMEUSE</div></div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>08 / 12</span></div>
+  </section>
+
+  <!-- 09 Why now -->
+  <section class="slide" data-screen-label="09 Why now">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">07 · Why now</p>
+    <div class="pad" style="display: grid; align-content: center; gap: 56px;">
+      <div style="display: grid; gap: 16px;">
+        <p class="s-eyebrow">Why this is the window</p>
+        <h2 class="s-h2" style="max-width: 28ch;">Three curves crossed at the same time.</h2>
+      </div>
+      <div class="why-now-grid">
+        <div class="item">
+          <span class="num">Compute</span>
+          <h3>Edge compute is now mobile</h3>
+          <p>What required a server room in 2018 now fits in a haul-truck cab and operates at -40°.</p>
+        </div>
+        <div class="item">
+          <span class="num">AI</span>
+          <h3>Perception generalizes</h3>
+          <p>Foundation-model perception means a single stack can work across sites it has never seen.</p>
+        </div>
+        <div class="item">
+          <span class="num">Labor</span>
+          <h3>The shortage is structural</h3>
+          <p>The next decade of mining will be defined by who automates first. The window is open now.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>09 / 12</span></div>
+  </section>
+
+  <!-- 10 Roadmap -->
+  <section class="slide dark" data-screen-label="10 Roadmap">
+    <div class="slide-frame"></div>
+    <div style="position:absolute; inset: 200px 160px 140px; display: grid; align-content: center; gap: 72px;">
+      <div style="display: grid; gap: 16px;">
+        <p class="s-eyebrow" style="color: var(--pronto-white);">Roadmap</p>
+        <h2 class="s-h2" style="color: var(--pronto-white); max-width: 22ch;">From 100 trucks live to mixed-fleet coordination, to adjacent categories.</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-step now">
+          <div class="when" style="color: var(--pronto-white);">2026</div>
+          <div class="title" style="color: var(--pronto-white);">Scale</div>
+          <div class="desc" style="color: var(--n-300);">100 trucks in production. Regional ops in SA and AU.</div>
+        </div>
+        <div class="tl-step">
+          <div class="when" style="color: var(--pronto-white);">2027</div>
+          <div class="title" style="color: var(--pronto-white);">Rovers GA</div>
+          <div class="desc" style="color: var(--n-300);">Mixed-fleet coordination. Manned + autonomous together.</div>
+        </div>
+        <div class="tl-step">
+          <div class="when" style="color: var(--pronto-white);">2028</div>
+          <div class="title" style="color: var(--pronto-white);">Adjacencies</div>
+          <div class="desc" style="color: var(--n-300);">Quarrying, large construction, port handling.</div>
+        </div>
+        <div class="tl-step">
+          <div class="when" style="color: var(--pronto-white);">2030</div>
+          <div class="title" style="color: var(--pronto-white);">Category leader</div>
+          <div class="desc" style="color: var(--n-300);">Most autonomous ton-kilometers, globally.</div>
+        </div>
+      </div>
+      <style>
+        .slide.dark .tl-step::before { background: var(--pronto-white); }
+        .slide.dark .tl-step.now::before { background: var(--pronto-white); box-shadow: 0 0 0 4px var(--pronto-black), 0 0 0 6px var(--pronto-white); }
+        .slide.dark .timeline::before { background: var(--pronto-white); }
+      </style>
+    </div>
+    <div class="slide-foot"><span style="color: var(--n-300);">Pronto · Pitch Deck</span><span style="color: var(--n-300);">10 / 12</span></div>
+  </section>
+
+  <!-- 11 Ask -->
+  <section class="slide" data-screen-label="11 Ask">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">08 · The ask</p>
+    <div class="pad" style="display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-content: center;">
+      <div style="display: grid; gap: 28px;">
+        <p class="s-eyebrow">What we're raising for</p>
+        <h2 class="s-h2">Triple the deployment engineering team. Stand up regional ops in <span class="hl">SA</span> and <span class="hl">AU</span>.</h2>
+      </div>
+      <ul class="ticks">
+        <li>30+ deployment engineers in-region by Q4.</li>
+        <li>Two new ops hubs co-located with anchor customers.</li>
+        <li>Rovers GA hardware tooling and certification.</li>
+        <li>Reserves for two strategic acquisitions in perception.</li>
+      </ul>
+    </div>
+    <div class="slide-foot"><span>Pronto · Pitch Deck</span><span>11 / 12</span></div>
+  </section>
+
+  <!-- 12 Closing -->
+  <section class="slide dark" data-screen-label="12 Closing">
+    <div class="slide-frame"></div>
+    <div class="cover">
+      <img class="lockup-top" src="../assets/pronto_logo_white.svg" alt="Pronto" />
+      <p class="s-eyebrow" style="color: var(--pronto-white); margin-bottom: 32px;">The fastest path to autonomous haulage that already exists</p>
+      <h1 style="font-size: 168px;">Let's talk.</h1>
+      <div class="meta">
+        <span>investors@pronto.ai</span>
+        <span>pronto.ai</span>
+      </div>
+    </div>
+    <div class="slide-foot"><span style="color: var(--n-300);">Pronto · Pitch Deck</span><span style="color: var(--n-300);">12 / 12</span></div>
+  </section>
+
+</deck-stage>
+</body>
+</html>

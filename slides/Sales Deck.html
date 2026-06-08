@@ -1,0 +1,269 @@
+<!doctype html>
+<!-- Sales Deck — Pronto AHS · Q2 2026 -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto — Sales Deck</title>
+<link rel="stylesheet" href="../project/colors_and_type.css" />
+<link rel="stylesheet" href="_deck.css" />
+<script src="deck-stage.js"></script>
+<script type="application/json" id="speaker-notes">
+[
+  "Welcome. Today's conversation is about how Pronto's Autonomous Haulage System turns your mixed-OEM fleet into a single, supervised autonomous operation — starting in production within months, not years.",
+  "Three problems define the next decade of mining: rising labor costs, safety incidents in haul cycles, and the operational complexity of running mixed OEMs across multiple pits. We talk to most operators every quarter. These are the three we hear about every single time.",
+  "Pronto AHS is what we'd build if we were designing autonomy from a clean sheet today — software-first, AI-centric, OEM-agnostic, engineered for the kind of resiliency real production environments demand.",
+  "The portfolio is the proof. Pronto has put more truck models, from more OEMs, into production than any other AHS provider on the market. Komatsu, Caterpillar, Volvo, Scania, Bell, VW — converted, deployed, hauling.",
+  "The numbers behind the portfolio: three continents, first in America to run a mixed Cat-and-Komatsu fleet fully autonomous, twelve-plus models converted, one hundred trucks under contract for the next 36 months, and over thirty million ton-kilometers already hauled autonomously.",
+  "We hear it in every diligence call. The customers who buy us first, buy us again. We're trusted by Vale, Maaden, CRH, Heidelberg Materials, Rogers Group, and Carmeuse — across hard rock, aggregates, and base metals.",
+  "Autonomous haulage is more than just trucks. Fleets coordinates the entire operation in a single web-based dispatcher. Rovers brings manned vehicles — shovels, dozers, light vehicles — safely into the autonomous ecosystem.",
+  "Most AHS rollouts take 24+ months. Ours typically reach first ore in under 12. The reason: we don't replace the truck OEM stack — we layer on top of it. Less integration risk, faster time to value, no lock-in.",
+  "Here's what the next 12 months look like together. Pilot, expand, scale. Each phase has clear go / no-go criteria and contractual unit economics.",
+  "Let's talk about your operation. The next step is a discovery session — we map your current fleet, OEM mix, and haul cycles, and come back with a deployment plan and an indicative quote inside 30 days."
+]
+</script>
+<style>
+  .cover-mini h1 { font-size: 168px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; align-items: end; }
+  .truck-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 32px; }
+  .truck-grid .item { display: grid; gap: 10px; text-align: center; }
+  .truck-grid .item .ph {
+    aspect-ratio: 4 / 3; background: var(--surface-alt); border: 1px solid var(--divider);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-weight: 400; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted);
+  }
+  .truck-grid .item .name { font-family: var(--font-sans); font-weight: 400; font-size: 22px; }
+  .truck-grid .item .ton { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted); }
+  .two-col { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; height: 100%; align-items: center; padding: 160px 88px 120px; }
+  .two-col.reverse { grid-template-columns: 1.1fr 1fr; }
+  .hero-photo { aspect-ratio: 16 / 11; background: var(--pronto-black) center/cover no-repeat; border: 1.5px solid var(--pronto-black); }
+  .diagram-panel { position: absolute; inset: 220px 88px 220px; background: var(--pronto-white); overflow: hidden; }
+  .diagram-panel .truck-ph {
+    position: absolute; inset: 80px 240px; background: var(--pronto-black);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pronto-white); font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .pad { position: absolute; inset: 200px 88px 120px; }
+</style>
+</head>
+<body>
+<deck-stage>
+
+  <!-- 01 Cover -->
+  <section class="slide dark" data-screen-label="01 Cover">
+    <div class="slide-frame"></div>
+    <div class="cover">
+      <img class="lockup-top" src="../assets/pronto_logo_white.svg" alt="Pronto" />
+      <p class="s-eyebrow" style="color: var(--pronto-white); margin-bottom: 32px;">Sales Briefing · Q2 2026</p>
+      <h1>Autonomy<br/>simplified.</h1>
+      <div class="meta">
+        <span>For <strong>Prepared Client</strong></span>
+        <span>Presented by Pronto AHS</span>
+        <span>2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Problem -->
+  <section class="slide" data-screen-label="02 Problem">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">01 · The problem</p>
+    <div class="pad" style="display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-content: center;">
+      <div>
+        <p class="s-eyebrow" style="margin-bottom: 28px;">Mining's autonomy gap</p>
+        <h2 class="s-h1">Most haul fleets are <span class="hl">locked-in</span>, slow to deploy, and single-OEM.</h2>
+      </div>
+      <ul class="ticks" style="align-self: end;">
+        <li>Single-vendor AHS forces full fleet replacement at every refresh cycle.</li>
+        <li>24+ month integration timelines before first autonomous ore.</li>
+        <li>Mixed fleets — Komatsu, Cat, Volvo — left without a unified dispatcher.</li>
+        <li>Manned vehicles in the same pit can't be safely coordinated with autonomous haulers.</li>
+      </ul>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>02 / 10</span></div>
+  </section>
+
+  <!-- 03 Solution -->
+  <section class="slide" data-screen-label="03 Solution">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">02 · Our approach</p>
+    <div class="two-col reverse">
+      <div class="hero-photo" style="background-image: url('../assets/pronto_hero_rolling.jpg');"></div>
+      <div>
+        <p class="s-eyebrow" style="margin-bottom: 28px;">Pronto AHS</p>
+        <h2 class="s-h2"><span class="hl">Fully vertically integrated</span>, OEM-agnostic, AI-centric.</h2>
+        <p class="s-body" style="font-size: 24px; margin-top: 36px; max-width: 38ch;">
+          Software-first autonomy that layers on top of your existing haul trucks — no fleet replacement, no vendor lock-in, engineered for the conditions your operation actually runs in.
+        </p>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>03 / 10</span></div>
+  </section>
+
+  <!-- 04 OEM portfolio -->
+  <section class="slide" data-screen-label="04 Portfolio">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">03 · Portfolio</p>
+    <div class="pad" style="display: grid; gap: 64px; align-content: start;">
+      <div style="display: grid; gap: 16px;">
+        <p class="s-eyebrow">Pronto's OEM-agnostic portfolio</p>
+        <h2 class="s-h2" style="max-width: 24ch;">Pronto has put more truck models from more OEMs <span class="hl">into production</span> than any other AHS provider.</h2>
+      </div>
+      <div class="truck-grid">
+        <div class="item"><div class="ph">KOMATSU HD605</div><div class="name">HD605</div><div class="ton">63 t</div></div>
+        <div class="item"><div class="ph">KOMATSU HD785</div><div class="name">HD785</div><div class="ton">100 t</div></div>
+        <div class="item"><div class="ph">CAT 775G</div><div class="name">CAT 775G</div><div class="ton">70 t</div></div>
+        <div class="item"><div class="ph">CAT 777G</div><div class="name">CAT 777G</div><div class="ton">100 t</div></div>
+        <div class="item"><div class="ph">BELL B60E</div><div class="name">B60E</div><div class="ton">60 t</div></div>
+        <div class="item"><div class="ph">KOMATSU HD1500</div><div class="name">HD1500</div><div class="ton">150 t · In development</div></div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>04 / 10</span></div>
+  </section>
+
+  <!-- 05 Stats -->
+  <section class="slide" data-screen-label="05 Stats">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">04 · Traction</p>
+    <div class="pad" style="display: grid; gap: 96px; align-content: center;">
+      <h2 class="s-h2" style="max-width: 28ch;"><span class="hl">Battle-tested</span> via deployments in a wide range of challenging production environments.</h2>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="label">Continents</div>
+          <div class="desc">Pronto AHS is already deployed and operating across three continents.</div>
+        </div>
+        <div class="stat">
+          <div class="num">1<sup>st</sup></div>
+          <div class="label">In America</div>
+          <div class="desc">To operate a mixed-OEM fleet (Cat + Komatsu) fully autonomous.</div>
+        </div>
+        <div class="stat">
+          <div class="num">12+</div>
+          <div class="label">Models converted</div>
+          <div class="desc">Twelve-plus models from five different OEMs converted to operate autonomously.</div>
+        </div>
+        <div class="stat">
+          <div class="num">100+</div>
+          <div class="label">Contracted trucks</div>
+          <div class="desc">Pronto has contracts to deploy more than 100 trucks over the next 36 months.</div>
+        </div>
+        <div class="stat">
+          <div class="num">30M+</div>
+          <div class="label">Ton-kilometers</div>
+          <div class="desc">More than 30 million ton-kilometers already hauled autonomously.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>05 / 10</span></div>
+  </section>
+
+  <!-- 06 Customers -->
+  <section class="slide" data-screen-label="06 Customers">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">05 · Customers</p>
+    <div class="pad" style="display: grid; gap: 80px; align-content: center;">
+      <div style="display: grid; gap: 18px;">
+        <p class="s-eyebrow">Trusted by industry leaders</p>
+        <h2 class="s-h2" style="max-width: 24ch;">Operating in production at the world's most demanding mining and aggregates sites.</h2>
+      </div>
+      <div class="logo-grid">
+        <div class="cell"><div class="name">VALE</div></div>
+        <div class="cell"><div class="name">MAADEN</div></div>
+        <div class="cell"><div class="name">CRH</div></div>
+        <div class="cell"><div class="name">HEIDELBERG MATERIALS</div></div>
+        <div class="cell"><div class="name">ROGERS GROUP</div></div>
+        <div class="cell"><div class="name">CARMEUSE</div></div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>06 / 10</span></div>
+  </section>
+
+  <!-- 07 Product diagram -->
+  <section class="slide" data-screen-label="07 Product">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">06 · Product</p>
+    <div style="position: absolute; top: 120px; left: 88px; right: 88px;">
+      <p class="s-eyebrow">Pronto AHS: software and AI-centric</p>
+      <h2 class="s-h2" style="margin-top: 16px; max-width: 32ch;">Autonomy that <span class="hl">layers onto your trucks</span> — no full-fleet replacement.</h2>
+    </div>
+    <div class="diagram-panel">
+      <div class="truck-ph">[ HAUL TRUCK WITH PRONTO HARDWARE ]</div>
+      <div class="callout" style="top: 60px; left: 60px;"><span class="dot"></span><span class="line" style="width: 120px;"></span><span>LTE / GPS antennas</span></div>
+      <div class="callout" style="top: 60px; right: 60px; flex-direction: row-reverse;"><span class="dot"></span><span class="line" style="width: 120px;"></span><span>Satellite antenna</span></div>
+      <div class="callout" style="top: 50%; left: 60px;"><span class="dot"></span><span class="line" style="width: 100px;"></span><span>Front cameras</span></div>
+      <div class="callout" style="top: 50%; right: 60px; flex-direction: row-reverse;"><span class="dot"></span><span class="line" style="width: 100px;"></span><span>Edge compute box</span></div>
+      <div class="callout" style="bottom: 60px; left: 60px;"><span class="dot"></span><span class="line" style="width: 120px;"></span><span>Drive-by-wire kit</span></div>
+      <div class="callout" style="bottom: 60px; right: 60px; flex-direction: row-reverse;"><span class="dot"></span><span class="line" style="width: 100px;"></span><span>Rear cameras</span></div>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>07 / 10</span></div>
+  </section>
+
+  <!-- 08 Differentiation -->
+  <section class="slide dark" data-screen-label="08 Differentiation">
+    <div class="slide-frame"></div>
+    <div class="quote" style="background: var(--pronto-black); padding: 200px 160px 120px;">
+      <p class="s-eyebrow">Why Pronto wins on time</p>
+      <p style="color: var(--pronto-white); max-width: 26ch;">First ore in <span class="hl--solid" style="color: var(--pronto-black);">under 12 months</span> — the industry standard is 24+.</p>
+      <p class="s-body" style="color: var(--n-300); max-width: 38ch; font-size: 24px;">
+        We don't replace the truck OEM stack. We layer onto it. Less integration risk, faster time to value, no vendor lock-in.
+      </p>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>08 / 10</span></div>
+  </section>
+
+  <!-- 09 Roadmap -->
+  <section class="slide" data-screen-label="09 Roadmap">
+    <div class="slide-frame"></div>
+    <p class="slide-corner">07 · Together</p>
+    <div class="pad" style="display: grid; gap: 96px; align-content: center;">
+      <div style="display: grid; gap: 16px;">
+        <p class="s-eyebrow">Next 12 months</p>
+        <h2 class="s-h2" style="max-width: 22ch;">From discovery to scaled autonomous production.</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-step now">
+          <div class="when">Month 0–1 · Now</div>
+          <div class="title">Discovery</div>
+          <div class="desc">Fleet audit, OEM mix, haul-cycle modeling. Indicative quote in 30 days.</div>
+        </div>
+        <div class="tl-step">
+          <div class="when">Month 2–4</div>
+          <div class="title">Pilot install</div>
+          <div class="desc">Two-truck pilot, on your site, supervised autonomy on a representative cycle.</div>
+        </div>
+        <div class="tl-step">
+          <div class="when">Month 5–9</div>
+          <div class="title">Production</div>
+          <div class="desc">First ore at autonomy. Operator training, Fleets dispatcher rollout.</div>
+        </div>
+        <div class="tl-step">
+          <div class="when">Month 10–12</div>
+          <div class="title">Scale</div>
+          <div class="desc">Expand to full pit, add Rovers for manned-fleet integration.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-foot"><span>Pronto AHS · Sales Deck</span><span>09 / 10</span></div>
+  </section>
+
+  <!-- 10 CTA -->
+  <section class="slide dark" data-screen-label="10 CTA">
+    <div class="slide-frame"></div>
+    <div class="cover">
+      <img class="lockup-top" src="../assets/pronto_logo_white.svg" alt="Pronto" />
+      <p class="s-eyebrow" style="color: var(--pronto-white); margin-bottom: 32px;">Next step</p>
+      <h1 style="font-size: 168px;">Schedule a<br/>consultation.</h1>
+      <div class="meta">
+        <span>sales@pronto.ai</span>
+        <span>pronto.ai</span>
+        <span style="color: var(--pronto-white);">Discovery → 30 days</span>
+      </div>
+    </div>
+    <div class="slide-foot"><span style="color: var(--n-300);">Pronto AHS · Sales Deck</span><span style="color: var(--n-300);">10 / 10</span></div>
+  </section>
+
+</deck-stage>
+</body>
+</html>

@@ -1,0 +1,426 @@
+/* =========================================================================
+   Pronto Deck Styles
+   Shared layout patterns for 1920×1080 slide decks.
+   Builds on tokens from ../colors_and_type.css
+   ========================================================================= */
+
+/* deck-stage host */
+deck-stage {
+  --slide-width: 1920px;
+  --slide-height: 1080px;
+  background: var(--n-800);
+}
+
+deck-stage > section {
+  background: var(--pronto-white);
+  color: var(--pronto-black);
+  font-family: var(--font-sans);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* --- Slide framing — most Pronto decks use a thin black border inset --- */
+.slide-frame {
+  position: absolute;
+  inset: 56px;
+  border: 1.5px solid var(--pronto-black);
+  pointer-events: none;
+}
+.slide.dark .slide-frame { border-color: var(--pronto-white); }
+
+/* --- Slide chrome --- */
+.slide-corner {
+  position: absolute;
+  top: 80px; left: 88px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pronto-black);
+  z-index: 3;
+}
+.slide.dark .slide-corner { color: var(--pronto-white); }
+
+.slide-foot {
+  position: absolute;
+  bottom: 76px; left: 88px; right: 88px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--n-500);
+  z-index: 3;
+}
+.slide.dark .slide-foot { color: var(--n-300); }
+.slide-foot .badge { height: 24px; width: auto; }
+
+/* --- Type roles for slides --- */
+.s-eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pronto-black);
+  margin: 0;
+}
+.slide.dark .s-eyebrow { color: var(--pronto-white); }
+
+.s-h1 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 92px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.s-h2 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.s-h3 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.s-lede {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  margin: 0;
+  max-width: 22ch;
+  color: var(--pronto-black);
+}
+.slide.dark .s-lede { color: var(--n-300); }
+
+.s-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--fg-muted);
+  margin: 0;
+  max-width: 42ch;
+}
+.slide.dark .s-body { color: var(--n-300); }
+
+.s-byline {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.slide.dark .s-byline { color: var(--n-300); }
+
+/* --- Phrase highlight (underline behind a word/phrase) --- */
+.hl {
+  display: inline;
+  background-image: linear-gradient(to top, var(--pronto-black) 0, var(--pronto-black) 8%, transparent 8%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 0 0.05em;
+}
+.slide.dark .hl {
+  background-image: linear-gradient(to top, var(--pronto-white) 0, var(--pronto-white) 8%, transparent 8%);
+}
+/* Solid inversion — white block, black text (used on dark slides) */
+.hl--solid {
+  background: var(--pronto-white);
+  color: var(--pronto-black);
+  padding: 0 0.1em;
+  display: inline-block;
+}
+
+/* --- Stat numerals (the big numbers) --- */
+.stat {
+  display: grid; gap: 14px;
+}
+.stat .num {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 168px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--pronto-black);
+}
+.slide.dark .stat .num { color: var(--pronto-white); }
+.stat .num sup { font-size: 0.45em; vertical-align: 0.6em; letter-spacing: 0; }
+.stat .label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pronto-black);
+  border-top: 1.5px solid var(--pronto-black);
+  padding-top: 14px;
+}
+.slide.dark .stat .label { color: var(--pronto-white); border-top-color: var(--pronto-white); }
+.stat .desc {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 1.35;
+  color: var(--fg-muted);
+}
+.slide.dark .stat .desc { color: var(--n-300); }
+
+/* --- Section divider (full-bleed black) --- */
+.section-divider {
+  background: var(--pronto-black);
+  color: var(--pronto-white);
+  display: grid;
+  align-content: center;
+  padding: 0 160px;
+  height: 100%;
+  position: relative;
+}
+.section-divider .num-big {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0.2em;
+  color: var(--pronto-white);
+}
+.section-divider h2 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 144px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-top: 36px;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+
+/* --- Quote slide --- */
+.quote {
+  padding: 0 160px;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  gap: 64px;
+}
+.quote .glyph {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 240px;
+  line-height: 0.7;
+  color: var(--pronto-grey);
+  margin-bottom: -120px;
+}
+.slide.dark .quote .glyph { color: var(--n-600); }
+.quote p {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 26ch;
+}
+.quote .attrib {
+  display: grid; gap: 6px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.quote .attrib .name { color: var(--pronto-black); }
+.slide.dark .quote .attrib .name { color: var(--pronto-white); }
+.quote .attrib .role { color: var(--fg-muted); }
+.slide.dark .quote .attrib .role { color: var(--n-300); }
+
+/* --- Logo grid (partners / customers) --- */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--divider);
+  border-left: 1px solid var(--divider);
+}
+.logo-grid .cell {
+  border-right: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  aspect-ratio: 2 / 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: var(--pronto-white);
+}
+.logo-grid .cell .name {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: -0.005em;
+  color: var(--n-700);
+}
+
+/* --- Roadmap timeline --- */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  position: relative;
+}
+.timeline::before {
+  content: ""; position: absolute;
+  left: 0; right: 0; top: 36px;
+  height: 1.5px; background: var(--pronto-black);
+}
+.tl-step {
+  position: relative;
+  padding-top: 96px;
+  display: grid; gap: 14px;
+}
+.tl-step::before {
+  content: "";
+  position: absolute;
+  top: 30px; left: 0;
+  width: 14px; height: 14px;
+  background: var(--pronto-black);
+  border-radius: 50%;
+}
+.tl-step.now::before { background: var(--pronto-black); box-shadow: 0 0 0 4px var(--pronto-white), 0 0 0 6px var(--pronto-black); }
+.tl-step .when {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pronto-black);
+}
+.tl-step .title {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.tl-step .desc {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--fg-muted);
+}
+
+/* --- Pull quote / hl stripe --- */
+.hl-stripe {
+  background: var(--pronto-black);
+  color: var(--pronto-white);
+  padding: 28px 32px;
+  display: inline-block;
+}
+
+/* --- Product panel --- */
+.product-panel {
+  background: var(--surface-alt);
+  padding: 56px;
+  display: grid;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.product-panel .callout {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pronto-black);
+  display: flex; align-items: center; gap: 12px;
+}
+.product-panel .callout .line {
+  height: 1.5px;
+  background: var(--pronto-black);
+}
+.product-panel .callout .dot {
+  width: 10px; height: 10px;
+  background: var(--pronto-black); border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+/* --- Cover / title slide patterns --- */
+.cover {
+  height: 100%; display: grid; align-content: end;
+  padding: 0 88px 100px;
+  position: relative;
+  background: var(--pronto-black);
+  color: var(--pronto-white);
+}
+.cover .lockup-top {
+  position: absolute;
+  top: 96px; left: 88px;
+  height: 32px; width: auto;
+}
+.cover h1 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 200px;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin: 0;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+.cover .meta {
+  display: flex; gap: 64px; align-items: baseline;
+  margin-top: 64px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--n-300);
+}
+.cover .meta strong { color: var(--pronto-white); font-weight: 400; }
+
+/* --- Bullet list patterns --- */
+.ticks {
+  display: grid; gap: 28px;
+}
+.ticks li {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 22px;
+  align-items: baseline;
+  list-style: none;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.slide.dark .ticks li { border-bottom-color: rgba(255,255,255,0.18); }
+.ticks li::before {
+  content: "";
+  display: inline-block;
+  width: 20px; height: 20px;
+  background: var(--pronto-black);
+  transform: translateY(4px);
+}
+.slide.dark .ticks li::before { background: var(--pronto-white); }
+
+/* --- Default reset for img inside slides --- */
+deck-stage img { display: block; max-width: 100%; }
