@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto · Newsroom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="project/colors_and_type.css" />
+<style>
+  :root { --page-x: 40px; }
+  html, body { background: var(--pronto-white); }
+  body { overflow-x: hidden; }
+  a { text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 32px;
+    padding: 18px var(--page-x);
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav .brand { display: flex; align-items: center; gap: 16px; }
+  .nav .brand img { height: 18px; width: auto; display: block; }
+  .nav .brand .ver {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.16);
+  }
+  .nav .links { display: flex; gap: 28px; margin-left: 32px; }
+  .nav .links a {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--n-300);
+    transition: color var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .links a:hover { color: var(--pronto-white); }
+  .nav .links a.active { color: var(--pronto-white); position: relative; }
+  .nav .links a.active::after { content:""; position:absolute; left:0; right:0; bottom:-22px; height:1px; background: var(--pronto-white); }
+  .nav .spacer { flex: 1; }
+  .nav .cta {
+    font-family: var(--font-sans); font-weight: 500; font-size: 13px;
+    padding: 10px 16px; background: var(--pronto-white); color: var(--pronto-black);
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .cta:hover { opacity: 0.7; }
+
+  /* Page header */
+  .page-head {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 96px var(--page-x) 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .page-head .eyebrow {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); margin-bottom: 24px; display: block;
+  }
+  .page-head h1 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(52px, 6vw, 96px); line-height: 0.96; letter-spacing: -0.03em;
+    color: var(--pronto-white); margin: 0; text-wrap: balance;
+  }
+  .page-head .sub {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 17px; line-height: 1.45; color: var(--n-300); max-width: 52ch; margin-top: 24px;
+  }
+
+  /* Featured strip */
+  .featured {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 72px var(--page-x);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: block;
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+  }
+  .featured:hover { opacity: 0.85; }
+  .featured .inner {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start;
+  }
+  .featured .pill {
+    display: inline-block;
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 4px 10px; border: 1px solid rgba(255,255,255,0.3);
+    color: var(--pronto-white); margin-bottom: 28px;
+  }
+  .featured h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(32px, 4vw, 56px); line-height: 0.96; letter-spacing: -0.028em;
+    color: var(--pronto-white); margin: 0 0 20px; text-wrap: balance;
+  }
+  .featured .excerpt {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 16px; line-height: 1.5; color: var(--n-300); max-width: 52ch; margin-bottom: 28px;
+  }
+  .featured .read-link {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--pronto-white); display: inline-flex; align-items: center; gap: 10px;
+  }
+  .featured .read-link::after {
+    content: ""; display: inline-block; width: 14px; height: 1px;
+    background: var(--pronto-white); position: relative;
+  }
+  .featured .meta-stack {
+    display: grid; gap: 0; border: 1px solid rgba(255,255,255,0.12);
+  }
+  .featured .meta-row {
+    padding: 18px 20px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 16px; align-items: baseline;
+  }
+  .featured .meta-row:last-child { border-bottom: 0; }
+  .featured .meta-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--n-400);
+  }
+  .featured .meta-val {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 14px; color: var(--n-300);
+  }
+
+  /* Category filter bar */
+  .cat-tabs {
+    display: flex;
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+  }
+  .cat-tabs button {
+    flex: 1; padding: 18px 20px;
+    border: 0; border-right: 1px solid var(--divider);
+    background: var(--surface); cursor: pointer;
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--fg-muted);
+    transition: background var(--dur-base) var(--ease-pronto), color var(--dur-base) var(--ease-pronto);
+    text-align: left;
+  }
+  .cat-tabs button:last-child { border-right: 0; }
+  .cat-tabs button:hover { background: var(--surface-alt); color: var(--fg); }
+  .cat-tabs button.active { background: var(--pronto-black); color: var(--pronto-white); }
+
+  /* Article grid */
+  .article-section { padding: 0 0 120px; }
+  .article-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--divider);
+    border: 1px solid var(--divider);
+  }
+  .article-card {
+    background: var(--surface); padding: 28px;
+    display: grid; grid-template-rows: auto auto auto 1fr auto;
+    gap: 12px;
+    transition: background var(--dur-quick) var(--ease-pronto);
+  }
+  .article-card:hover { background: var(--surface-alt); }
+  .article-card.is-hidden { display: none; }
+  .card-cat {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .card-headline {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: 22px; line-height: 1.08; letter-spacing: -0.015em;
+    color: var(--fg); text-wrap: balance;
+  }
+  .card-date {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .card-excerpt {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 14px; line-height: 1.5; color: var(--fg-muted);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card-read {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg); display: inline-flex; align-items: center; gap: 8px;
+    align-self: end;
+  }
+  .card-read::after {
+    content: ""; display: inline-block; width: 12px; height: 1px; background: var(--fg);
+  }
+
+  /* Footer */
+  footer { padding: 40px var(--page-x); background: var(--pronto-black); color: var(--n-300); border-top: 1px solid rgba(255,255,255,0.08); }
+  footer .row { display: flex; justify-content: space-between; align-items: center; }
+  footer .mono { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  footer img { height: 16px; width: auto; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 800ms var(--ease-pronto), transform 800ms var(--ease-pronto); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .nav .links { display: none; }
+    .featured .inner { grid-template-columns: 1fr; gap: 40px; }
+    .article-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-tabs { flex-wrap: wrap; }
+    .cat-tabs button { border-right: 0; border-bottom: 1px solid var(--divider); min-width: 50%; }
+  }
+  @media (max-width: 600px) {
+    .article-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <a href="index.html" style="display:flex;"><img src="assets/pronto_logo_white.svg" alt="Pronto" /></a>
+    <span class="ver">AHS · V1.0</span>
+  </div>
+  <div class="links">
+    <a href="index.html#oems">OEMs</a>
+    <a href="index.html#stats">Platform</a>
+    <a href="index.html#compat">Compatibility</a>
+    <a href="#">Customers</a>
+    <a href="newsroom.html" class="active">Newsroom</a>
+  </div>
+  <span class="spacer"></span>
+  <a class="cta" href="consultation.html">Schedule a Consultation</a>
+</nav>
+
+<header class="page-head reveal">
+  <span class="eyebrow">04 · Newsroom</span>
+  <h1>From the field.</h1>
+  <p class="sub">Deployments, partnerships, and milestones from the frontier of autonomous haulage. Press releases, operations updates, and industry news from Pronto AI.</p>
+</header>
+
+<a class="featured reveal" href="newsroom/heidelberg-expansion-2026.html">
+  <div class="inner">
+    <div>
+      <span class="pill">LATEST · APR 30, 2026</span>
+      <h2>Pronto Announces Expansion of Autonomous Haulage to Two New Heidelberg Materials Sites</h2>
+      <p class="excerpt">Mitchell, Indiana and Servtex, Texas join Lake Bridgeport — 30 autonomous vehicles across three sites in 2026, scaling to 100+ by end of 2028.</p>
+      <span class="read-link">Read full story</span>
+    </div>
+    <div>
+      <div class="meta-stack">
+        <div class="meta-row">
+          <span class="meta-label">Category</span>
+          <span class="meta-val">Operations</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Date</span>
+          <span class="meta-val">April 30, 2026</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Customer</span>
+          <span class="meta-val">Heidelberg Materials</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Sites</span>
+          <span class="meta-val">Mitchell, IN · Servtex, TX</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Fleet scale</span>
+          <span class="meta-val">30 vehicles · 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+
+<div class="cat-tabs reveal" id="catFilter">
+  <button class="active" data-cat="all">All</button>
+  <button data-cat="press-release">Press Releases</button>
+  <button data-cat="partnerships">Partnerships</button>
+  <button data-cat="operations">Operations</button>
+</div>
+
+<div class="article-section">
+  <div class="article-grid" id="articleGrid">
+
+    <a class="article-card reveal" href="newsroom/mariana-copper-one.html" data-cat="partnerships">
+      <span class="card-cat">Partnerships</span>
+      <h2 class="card-headline">Mariana Minerals Taps Pronto to Automate Utah's Copper One</h2>
+      <span class="card-date">Apr 9, 2026</span>
+      <p class="card-excerpt">The world's first autonomous-first mine deploys Pronto AHS Vision integrated with MineOS for end-to-end driverless haulage.</p>
+      <span class="card-read">Read more</span>
+    </a>
+
+    <a class="article-card reveal" href="newsroom/ahs-editions.html" data-cat="press-release">
+      <span class="card-cat">Press Release</span>
+      <h2 class="card-headline">Pronto Unveils AHS Editions: The Industry's First Tiered Autonomous Haulage Portfolio</h2>
+      <span class="card-date">Feb 5, 2026</span>
+      <p class="card-excerpt">Vision, VLR, and VLR 360 — three product lines designed around the physics and economics of every mining environment.</p>
+      <span class="card-read">Read more</span>
+    </a>
+
+    <a class="article-card reveal" href="newsroom/heidelberg-2mt-milestone.html" data-cat="operations">
+      <span class="card-cat">Operations</span>
+      <h2 class="card-headline">Pronto AHS Hauls Over 2 Million Tonnes at Heidelberg Materials' Lake Bridgeport</h2>
+      <span class="card-date">Jan 15, 2026</span>
+      <p class="card-excerpt">North America's first fully autonomous mixed-fleet quarry hit the 2-million-tonne mark in under eight months — with zero autonomy-related incidents.</p>
+      <span class="card-read">Read more</span>
+    </a>
+
+    <a class="article-card reveal" href="newsroom/komatsu-smart-quarry.html" data-cat="partnerships">
+      <span class="card-cat">Partnerships</span>
+      <h2 class="card-headline">Komatsu and Pronto Launch Smart Quarry Autonomous for Quarry-Size Trucks</h2>
+      <span class="card-date">Aug 7, 2025</span>
+      <p class="card-excerpt">Available through Komatsu's dealer network, the system enables operators to retrofit existing fleets or specify autonomy on new equipment.</p>
+      <span class="card-read">Read more</span>
+    </a>
+
+    <a class="article-card reveal" href="newsroom/safeai-acquisition.html" data-cat="press-release">
+      <span class="card-cat">Press Release</span>
+      <h2 class="card-headline">Pronto Acquires SafeAI, Expanding Leadership in Off-Road Autonomy</h2>
+      <span class="card-date">Jul 15, 2025</span>
+      <p class="card-excerpt">The acquisition brings together two OEM-agnostic pioneers, creating the industry's first tiered technology portfolio.</p>
+      <span class="card-read">Read more</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="row">
+    <img src="assets/pronto_logo_white.svg" alt="Pronto" />
+    <span class="mono">PRONTO AHS · V1.0 · OEM-AGNOSTIC AUTONOMY</span>
+    <span class="mono">© Pronto AI · Equipment renders © respective OEMs</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const filterBar = document.getElementById('catFilter');
+  const cards = [...document.querySelectorAll('#articleGrid .article-card')];
+  filterBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const cat = btn.dataset.cat;
+    filterBar.querySelectorAll('button').forEach(b => b.classList.toggle('active', b === btn));
+    cards.forEach(c => { c.classList.toggle('is-hidden', cat !== 'all' && c.dataset.cat !== cat); });
+  });
+</script>
+</body>
+</html>

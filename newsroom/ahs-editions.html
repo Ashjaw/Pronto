@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto · Pronto Unveils AHS Editions: The Industry's First Tiered Autonomous Haulage Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../project/colors_and_type.css" />
+<style>
+  :root { --page-x: 40px; }
+  html, body { background: var(--pronto-white); }
+  body { overflow-x: hidden; }
+  a { text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 32px;
+    padding: 18px var(--page-x);
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav .brand { display: flex; align-items: center; gap: 16px; }
+  .nav .brand img { height: 18px; width: auto; display: block; }
+  .nav .brand .ver {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.16);
+  }
+  .nav .links { display: flex; gap: 28px; margin-left: 32px; }
+  .nav .links a {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--n-300);
+    transition: color var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .links a:hover { color: var(--pronto-white); }
+  .nav .spacer { flex: 1; }
+  .nav .cta {
+    font-family: var(--font-sans); font-weight: 500; font-size: 13px;
+    padding: 10px 16px; background: var(--pronto-white); color: var(--pronto-black);
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .cta:hover { opacity: 0.7; }
+
+  /* Article header */
+  .article-head {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 96px var(--page-x) 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .article-head .eyebrow {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); margin-bottom: 24px; display: block;
+  }
+  .article-head h1 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 5vw, 80px); line-height: 0.96; letter-spacing: -0.03em;
+    color: var(--pronto-white); margin: 0; text-wrap: balance; max-width: 22ch;
+  }
+  .article-head .lead {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 20px; line-height: 1.45; color: var(--n-300); max-width: 56ch; margin-top: 28px;
+  }
+
+  /* Article body */
+  .article-body {
+    max-width: 760px; margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .article-body p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 17px; line-height: 1.65; color: var(--fg);
+    margin: 0 0 24px;
+  }
+  .article-body h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: 28px; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--fg); margin: 48px 0 20px;
+  }
+  .article-body blockquote {
+    border-left: 2px solid var(--pronto-black);
+    padding-left: 24px; margin: 40px 0;
+  }
+  .article-body blockquote p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 19px; line-height: 1.55; color: var(--fg);
+    font-style: italic; margin: 0;
+  }
+
+  /* More strip */
+  .more-strip {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 64px var(--page-x);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .more-strip .more-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); margin-bottom: 32px; display: block;
+  }
+  .more-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .more-card {
+    background: var(--pronto-black); padding: 28px;
+    display: grid; gap: 12px; align-content: start;
+    transition: background var(--dur-quick) var(--ease-pronto);
+  }
+  .more-card:hover { background: var(--n-800); }
+  .more-card .more-cat {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--n-400);
+  }
+  .more-card .more-headline {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: 18px; line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--pronto-white); text-wrap: balance;
+  }
+  .more-card .more-read {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--n-300); display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 4px;
+  }
+  .more-card .more-read::after {
+    content: ""; display: inline-block; width: 12px; height: 1px; background: var(--n-300);
+  }
+
+  /* Footer */
+  footer { padding: 40px var(--page-x); background: var(--pronto-black); color: var(--n-300); border-top: 1px solid rgba(255,255,255,0.08); }
+  footer .row { display: flex; justify-content: space-between; align-items: center; }
+  footer .mono { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  footer img { height: 16px; width: auto; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 800ms var(--ease-pronto), transform 800ms var(--ease-pronto); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .nav .links { display: none; }
+    .article-body { padding: 56px var(--page-x); }
+    .more-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <a href="../index.html" style="display:flex;"><img src="../assets/pronto_logo_white.svg" alt="Pronto" /></a>
+    <span class="ver">AHS · V1.0</span>
+  </div>
+  <div class="links">
+    <a href="../index.html#oems">OEMs</a>
+    <a href="../index.html#stats">Platform</a>
+    <a href="../index.html#compat">Compatibility</a>
+    <a href="#">Customers</a>
+    <a href="../newsroom.html">Newsroom</a>
+  </div>
+  <span class="spacer"></span>
+  <a class="cta" href="../consultation.html">Schedule a Consultation</a>
+</nav>
+
+<header class="article-head reveal">
+  <span class="eyebrow">Press Release · February 5, 2026</span>
+  <h1>Pronto Unveils AHS Editions: The Industry's First Tiered Autonomous Haulage Portfolio</h1>
+  <p class="lead">Vision, VLR, and VLR 360 — three product lines designed around the physics and economics of every mining environment.</p>
+</header>
+
+<div class="article-body reveal">
+  <p>Pronto has announced the industry's first tiered autonomous haulage system portfolio. The three-edition lineup matches sensor philosophy and safety architecture to the physics and economics of each deployment environment — from 30-tonne articulated dump trucks in aggregate quarries to 400-tonne ultra-class haulers in deep open-pit copper and iron ore mines.</p>
+
+  <h2>Three Editions</h2>
+
+  <p>Pronto AHS Vision uses camera arrays and Pronto's proprietary AI platform. With no LiDAR and no requirement for pre-mapped routes, Vision has the lowest barrier to entry of any production-grade AHS on the market. It is designed for rapid deployment at quarry and aggregate operations where site geometry changes frequently and infrastructure investment must be minimal.</p>
+
+  <p>Pronto AHS VLR adds long-range LiDAR and radar to the Vision camera stack. The system is fail-operational by design — if any single sensor modality degrades, the system maintains autonomous production rather than entering a safe-stop. VLR is built for operations where dust, fog, or precipitation would otherwise interrupt autonomous cycles.</p>
+
+  <p>Pronto AHS VLR 360 extends the sensor array to full 360-degree coverage. Designed for ultra-class haulers operating in high-density, complex pits — where vehicles from multiple OEMs, light vehicles, and personnel may share a haul corridor — VLR 360 provides situational awareness that cannot be achieved with forward-facing or limited-angle arrays.</p>
+
+  <blockquote>
+    <p>"VLR 360 isn't a luxury spec — for ultra-class operations at night, in dust, with mixed traffic, it's the minimum viable safety system."</p>
+  </blockquote>
+
+  <p>All three editions are OEM-agnostic across the full Pronto supported range, including the Komatsu 980E and Caterpillar 798. First VLR 360 production deployments are currently underway, with customer announcements to follow in 2026.</p>
+</div>
+
+<section class="more-strip reveal">
+  <span class="more-label">More from Newsroom</span>
+  <div class="more-grid">
+    <a class="more-card" href="safeai-acquisition.html">
+      <span class="more-cat">Press Release</span>
+      <span class="more-headline">Pronto Acquires SafeAI, Expanding Leadership in Off-Road Autonomy</span>
+      <span class="more-read">Read more</span>
+    </a>
+    <a class="more-card" href="heidelberg-expansion-2026.html">
+      <span class="more-cat">Operations</span>
+      <span class="more-headline">Pronto Announces Expansion of Autonomous Haulage to Two New Heidelberg Materials Sites</span>
+      <span class="more-read">Read more</span>
+    </a>
+    <a class="more-card" href="../newsroom.html">
+      <span class="more-cat">All Articles</span>
+      <span class="more-headline">Back to Newsroom</span>
+      <span class="more-read">View all</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="row">
+    <img src="../assets/pronto_logo_white.svg" alt="Pronto" />
+    <span class="mono">PRONTO AHS · V1.0 · OEM-AGNOSTIC AUTONOMY</span>
+    <span class="mono">© Pronto AI · Equipment renders © respective OEMs</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

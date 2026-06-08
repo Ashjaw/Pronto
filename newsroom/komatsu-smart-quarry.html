@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pronto · Komatsu and Pronto Launch Smart Quarry Autonomous for Quarry-Size Trucks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../project/colors_and_type.css" />
+<style>
+  :root { --page-x: 40px; }
+  html, body { background: var(--pronto-white); }
+  body { overflow-x: hidden; }
+  a { text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 32px;
+    padding: 18px var(--page-x);
+    background: var(--pronto-black);
+    color: var(--pronto-white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav .brand { display: flex; align-items: center; gap: 16px; }
+  .nav .brand img { height: 18px; width: auto; display: block; }
+  .nav .brand .ver {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.16);
+  }
+  .nav .links { display: flex; gap: 28px; margin-left: 32px; }
+  .nav .links a {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--n-300);
+    transition: color var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .links a:hover { color: var(--pronto-white); }
+  .nav .spacer { flex: 1; }
+  .nav .cta {
+    font-family: var(--font-sans); font-weight: 500; font-size: 13px;
+    padding: 10px 16px; background: var(--pronto-white); color: var(--pronto-black);
+    transition: opacity var(--dur-quick) var(--ease-pronto);
+  }
+  .nav .cta:hover { opacity: 0.7; }
+
+  /* Article header */
+  .article-head {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 96px var(--page-x) 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .article-head .eyebrow {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); margin-bottom: 24px; display: block;
+  }
+  .article-head h1 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: clamp(40px, 5vw, 80px); line-height: 0.96; letter-spacing: -0.03em;
+    color: var(--pronto-white); margin: 0; text-wrap: balance; max-width: 22ch;
+  }
+  .article-head .lead {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 20px; line-height: 1.45; color: var(--n-300); max-width: 56ch; margin-top: 28px;
+  }
+
+  /* Article body */
+  .article-body {
+    max-width: 760px; margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .article-body p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 17px; line-height: 1.65; color: var(--fg);
+    margin: 0 0 24px;
+  }
+  .article-body h2 {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: 28px; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--fg); margin: 48px 0 20px;
+  }
+  .article-body blockquote {
+    border-left: 2px solid var(--pronto-black);
+    padding-left: 24px; margin: 40px 0;
+  }
+  .article-body blockquote p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 19px; line-height: 1.55; color: var(--fg);
+    font-style: italic; margin: 0;
+  }
+
+  /* More strip */
+  .more-strip {
+    background: var(--pronto-black); color: var(--pronto-white);
+    padding: 64px var(--page-x);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .more-strip .more-label {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--n-400); margin-bottom: 32px; display: block;
+  }
+  .more-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .more-card {
+    background: var(--pronto-black); padding: 28px;
+    display: grid; gap: 12px; align-content: start;
+    transition: background var(--dur-quick) var(--ease-pronto);
+  }
+  .more-card:hover { background: var(--n-800); }
+  .more-card .more-cat {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--n-400);
+  }
+  .more-card .more-headline {
+    font-family: var(--font-sans); font-weight: 400;
+    font-size: 18px; line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--pronto-white); text-wrap: balance;
+  }
+  .more-card .more-read {
+    font-family: var(--font-mono); font-weight: 700;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--n-300); display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 4px;
+  }
+  .more-card .more-read::after {
+    content: ""; display: inline-block; width: 12px; height: 1px; background: var(--n-300);
+  }
+
+  /* Footer */
+  footer { padding: 40px var(--page-x); background: var(--pronto-black); color: var(--n-300); border-top: 1px solid rgba(255,255,255,0.08); }
+  footer .row { display: flex; justify-content: space-between; align-items: center; }
+  footer .mono { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  footer img { height: 16px; width: auto; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 800ms var(--ease-pronto), transform 800ms var(--ease-pronto); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .nav .links { display: none; }
+    .article-body { padding: 56px var(--page-x); }
+    .more-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <a href="../index.html" style="display:flex;"><img src="../assets/pronto_logo_white.svg" alt="Pronto" /></a>
+    <span class="ver">AHS · V1.0</span>
+  </div>
+  <div class="links">
+    <a href="../index.html#oems">OEMs</a>
+    <a href="../index.html#stats">Platform</a>
+    <a href="../index.html#compat">Compatibility</a>
+    <a href="#">Customers</a>
+    <a href="../newsroom.html">Newsroom</a>
+  </div>
+  <span class="spacer"></span>
+  <a class="cta" href="../consultation.html">Schedule a Consultation</a>
+</nav>
+
+<header class="article-head reveal">
+  <span class="eyebrow">Partnerships · August 7, 2025</span>
+  <h1>Komatsu and Pronto Launch Smart Quarry Autonomous for Quarry-Size Trucks</h1>
+  <p class="lead">Available through Komatsu's dealer network, the system enables operators to retrofit existing fleets or specify autonomy on new equipment.</p>
+</header>
+
+<div class="article-body reveal">
+  <p>Komatsu North America and Pronto have jointly announced Komatsu Smart Quarry Autonomous, powered by Pronto. The system is available through Komatsu's dealer network across North America, giving operators the choice to retrofit autonomy onto existing fleet assets or specify it at the point of new truck purchase.</p>
+
+  <p>Smart Quarry Autonomous integrates Pronto's AHS software and sensor suite directly with Komatsu's Smart Quarry platform — enabling 24/7 autonomous operation, consistent haul cycle times, measurable fuel efficiency improvements, and real-time operational data insights. The integration gives quarry managers a single interface for both machine telemetry and autonomous dispatch management.</p>
+
+  <blockquote>
+    <p>"Smart Quarry Autonomous is the answer — Pronto's proven AHS baked directly into the ecosystem quarry managers already use."</p>
+  </blockquote>
+
+  <p>The product follows a 2023 pilot at Heidelberg Materials' Lake Bridgeport operation in Texas, where Komatsu HD605 and Caterpillar 775G trucks ran in mixed-OEM autonomous formation under Pronto AHS. Both OEM-agnostic operation across manufacturers and direct dealer channel access represent industry firsts for quarry-scale autonomous haulage — making it the most commercially accessible autonomous haulage product for sub-150-tonne operations to date.</p>
+</div>
+
+<section class="more-strip reveal">
+  <span class="more-label">More from Newsroom</span>
+  <div class="more-grid">
+    <a class="more-card" href="heidelberg-2mt-milestone.html">
+      <span class="more-cat">Operations</span>
+      <span class="more-headline">Pronto AHS Hauls Over 2 Million Tonnes at Heidelberg Materials' Lake Bridgeport</span>
+      <span class="more-read">Read more</span>
+    </a>
+    <a class="more-card" href="safeai-acquisition.html">
+      <span class="more-cat">Press Release</span>
+      <span class="more-headline">Pronto Acquires SafeAI, Expanding Leadership in Off-Road Autonomy</span>
+      <span class="more-read">Read more</span>
+    </a>
+    <a class="more-card" href="../newsroom.html">
+      <span class="more-cat">All Articles</span>
+      <span class="more-headline">Back to Newsroom</span>
+      <span class="more-read">View all</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="row">
+    <img src="../assets/pronto_logo_white.svg" alt="Pronto" />
+    <span class="mono">PRONTO AHS · V1.0 · OEM-AGNOSTIC AUTONOMY</span>
+    <span class="mono">© Pronto AI · Equipment renders © respective OEMs</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
